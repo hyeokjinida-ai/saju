@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initHeaderScroll();
   initMobileMenu();
   initHeroCarousel();
+  initReviewCarousel();
   initReveal();
 });
 
@@ -92,6 +93,39 @@ function initHeroCarousel() {
   }
   function next() { go(idx + 1); }
   function start() { timer = setInterval(next, 5000); }
+  function restart() { clearInterval(timer); start(); }
+
+  start();
+}
+
+/* ---------- 후기 캐러셀 ---------- */
+function initReviewCarousel() {
+  const track = document.getElementById("reviewTrack");
+  const dotsWrap = document.getElementById("reviewDots");
+  if (!track || !dotsWrap) return;
+
+  const cards = Array.from(track.children);
+  if (cards.length <= 1) return;
+
+  let idx = 0;
+  let timer = null;
+
+  cards.forEach(function (_, i) {
+    const b = document.createElement("button");
+    b.setAttribute("aria-label", (i + 1) + "번 후기");
+    if (i === 0) b.classList.add("active");
+    b.addEventListener("click", function () { go(i); restart(); });
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function go(n) {
+    idx = (n + cards.length) % cards.length;
+    track.style.transform = "translateX(" + (-100 * idx) + "%)";
+    dots.forEach(function (d, i) { d.classList.toggle("active", i === idx); });
+  }
+  function next() { go(idx + 1); }
+  function start() { timer = setInterval(next, 4500); }
   function restart() { clearInterval(timer); start(); }
 
   start();
