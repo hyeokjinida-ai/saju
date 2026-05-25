@@ -809,3 +809,33 @@ a { color: inherit; text-decoration: none; }
   .saju-form { padding: 28px 20px; }
   .form-row { flex-direction: column; gap: 22px; }
 }
+
+/* ============================================================
+   이미지 자동 적용 (images 폴더에 파일이 있으면 자동 표시,
+   없으면 기존 CSS 비주얼이 그대로 보임) — js/main.js의 initImages()
+   ============================================================ */
+/* 히어로에 사진이 있을 때 */
+.hero.has-photo {
+  background-size: cover;
+  background-position: center;
+}
+.hero.has-photo .moon,
+.hero.has-photo .cloud,
+.hero.has-photo .mountain,
+.hero.has-photo .pine { display: none; }
+.hero.has-photo .stars { opacity: .35; }
+
+/* 카드 썸네일에 사진이 있을 때 */
+.card-thumb.has-img {
+  background-size: cover;
+  background-position: center;
+}
+.card-thumb.has-img::after { opacity: 0; }
+.card-thumb.has-img .glyph { display: none; }
+
+/* 서비스 페이지 상단 띠에 사진이 있을 때 */
+.page-hero.has-photo {
+  background-size: cover;
+  background-position: center;
+}
+.page-hero.has-photo .glyph-bg { opacity: .12; }

@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   applyKakaoLinks();
   initHeaderScroll();
   initMobileMenu();
+  initImages();
   initHeroCarousel();
   initReviewCarousel();
   initSajuForm();
@@ -97,6 +98,49 @@ function initHeroCarousel() {
   function restart() { clearInterval(timer); start(); }
 
   start();
+}
+
+/* ---------- 이미지 자동 적용 ----------
+   images 폴더에 해당 파일이 있으면 자동으로 표시하고,
+   없으면 기존 CSS 비주얼을 그대로 둡니다. (파일을 넣기만 하면 됨) */
+function initImages() {
+  // data-bg 요소 (카드 썸네일 등)
+  document.querySelectorAll("[data-bg]").forEach(function (el) {
+    const src = el.getAttribute("data-bg");
+    if (!src) return;
+    const probe = new Image();
+    probe.onload = function () {
+      el.style.backgroundImage = "url('" + src + "')";
+      el.classList.add("has-img");
+    };
+    probe.src = src;
+  });
+
+  // 히어로 배경 사진
+  const hero = document.querySelector(".hero[data-hero-bg]");
+  if (hero) {
+    const hsrc = hero.getAttribute("data-hero-bg");
+    const probe = new Image();
+    probe.onload = function () {
+      hero.style.backgroundImage =
+        "linear-gradient(rgba(21,19,31,.5), rgba(21,19,31,.82)), url('" + hsrc + "')";
+      hero.classList.add("has-photo");
+    };
+    probe.src = hsrc;
+  }
+
+  // 서비스 페이지 상단 띠 배경 사진
+  const pageHero = document.querySelector(".page-hero[data-hero-bg]");
+  if (pageHero) {
+    const psrc = pageHero.getAttribute("data-hero-bg");
+    const probe = new Image();
+    probe.onload = function () {
+      pageHero.style.backgroundImage =
+        "linear-gradient(rgba(21,19,31,.55), rgba(21,19,31,.8)), url('" + psrc + "')";
+      pageHero.classList.add("has-photo");
+    };
+    probe.src = psrc;
+  }
 }
 
 /* ---------- 후기 캐러셀 ---------- */
