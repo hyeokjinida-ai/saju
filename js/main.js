@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initMobileMenu();
   initHeroCarousel();
   initReviewCarousel();
+  initSajuForm();
   initReveal();
 });
 
@@ -129,6 +130,98 @@ function initReviewCarousel() {
   function restart() { clearInterval(timer); start(); }
 
   start();
+}
+
+/* ---------- 사주 신청서 폼 ---------- */
+function initSajuForm() {
+  const form = document.getElementById("sajuForm");
+  if (!form) return;
+
+  const typeSel = document.getElementById("f-type");
+  const partnerWrap = document.getElementById("partner-wrap");
+  const timeInput = document.getElementById("f-time");
+  const timeUnknown = document.getElementById("f-time-unknown");
+  const msg = document.getElementById("formMsg");
+
+  // URL 파라미터(?type=)로 상담 종류 미리 선택
+  const params = new URLSearchParams(location.search);
+  const preType = params.get("type");
+  if (preType) {
+    const opt = Array.from(typeSel.options).find(function (o) { return o.value === preType; });
+    if (opt) typeSel.value = preType;
+  }
+
+  // 궁합 선택 시 상대방 정보 표시
+  function togglePartner() {
+    partnerWrap.style.display = (typeSel.value === "궁합사주") ? "block" : "none";
+  }
+  typeSel.addEventListener("change", togglePartner);
+  togglePartner();
+
+  // 시간 모름 체크 시 시간 입력 비활성화
+  timeUnknown.addEventListener("change", function () {
+    timeInput.disabled = timeUnknown.checked;
+    if (timeUnknown.checked) timeInput.value = "";
+  });
+
+  function showMsg(text, ok) {
+    msg.textContent = text;
+    msg.classList.add("show");
+    msg.classList.toggle("ok", !!ok);
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("f-name").value.trim();
+    const birth = document.getElementById("f-birth").value;
+    if (!name) { showMsg("이름을 입력해 주세요.", false); document.getElementById("f-name").focus(); return; }
+    if (!birth) { showMsg("생년월일을 입력해 주세요.", false); document.getElementById("f-birth").focus(); return; }
+
+    const type = typeSel.value;
+    const gender = (form.querySelector('input[name="gender"]:checked') || {}).value || "";
+    const cal = document.getElementById("f-cal").value;
+    const time = timeUnknown.checked ? "모름" : (timeInput.value || "미입력");
+    const question = document.getElementById("f-question").value.trim();
+    const partner = document.getElementById("f-partner").value.trim();
+
+    let lines = [];
+    lines.push("[명리당 사주 신청]");
+    lines.push("· 상담: " + type);
+    lines.push("· 이름: " + name);
+    lines.push("· 성별: " + gender);
+    lines.push("· 양/음력: " + cal);
+    lines.push("· 생년월일: " + birth);
+    lines.push("· 태어난 시간: " + time);
+    if (type === "궁합사주" && partner) lines.push("· 상대방: " + partner);
+    if (question) lines.push("· 궁금한 점: " + question);
+    const text = lines.join("\n");
+
+    // 클립보드 복사 (실패 시 fallback)
+    function openKakao() {
+      const link = (typeof KAKAO_LINK !== "undefined") ? KAKAO_LINK : "#";
+      if (link && link !== "#") {
+        window.open(link, "_blank", "noopener");
+      }
+    }
+
+    function done(copied) {
+      showMsg(
+        (copied ? "신청 내용이 복사됐어요! " : "아래 내용을 복사해 ") +
+        "카카오톡 채팅창에 붙여넣고 보내주세요.\n\n" + text,
+        true
+      );
+      msg.style.whiteSpace = "pre-line";
+      msg.style.textAlign = "left";
+      openKakao();
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    } else {
+      done(false);
+    }
+  });
 }
 
 /* ---------- 스크롤 등장 애니메이션 ---------- */
