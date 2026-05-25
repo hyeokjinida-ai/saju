@@ -3,275 +3,368 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>명리당(命理堂) · 당신의 운명을 읽다</title>
-  <meta name="description" content="명리당 — 사주로 인생의 방향을 찾아보세요. 종합사주, 궁합사주, 자녀사주, 오늘의 운세. 카카오톡으로 간편 상담 신청." />
+  <title>기본 사주 리포트 19,000원 · 명리당</title>
+  <meta name="description" content="성격, 관계, 재물, 애정, 인생의 흐름을 한 편의 이야기처럼 정리해드리는 나만의 사주 리포트. 기본 사주 리포트 19,000원, 카카오톡으로 간편 신청." />
+  <meta property="og:title" content="처음 받아보는 나만의 사주 리포트 · 19,000원" />
+  <meta property="og:description" content="성격·관계·재물·애정·인생의 흐름을 차분히 정리해드립니다." />
 
-  <!-- 전통 한국 느낌 명조/붓글씨 서체 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Song+Myung&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/landing.css" />
 </head>
 <body>
 
   <!-- ===================== 헤더 ===================== -->
-  <!-- 브랜드명 "명리당 / 命理堂" ← 원하는 상호로 변경하세요 -->
-  <header class="site-header" id="header">
-    <a href="index.html" class="brand">
-      <span class="brand-kr">운명을 읽는 곳</span>
-      <span class="brand-hanja">命理堂</span>
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="명리당 홈">
+      <span class="kr">운명을 읽는 곳</span>
+      <span class="nm">명리당</span>
     </a>
-    <nav class="nav">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">홈</a></li>
-        <li><a href="services/jonghap.html">종합사주</a></li>
-        <li><a href="services/gunghap.html">궁합사주</a></li>
-        <li><a href="services/janyeo.html">자녀사주</a></li>
-        <li><a href="services/unse.html">오늘의 운세</a></li>
-        <li><a href="services/form.html">신청서</a></li>
-        <li><a href="#contact">상담안내</a></li>
-      </ul>
-      <a class="nav-kakao" data-kakao href="#">카카오 상담</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
+    <a href="/apply" class="head-cta" aria-label="사주 리포트 신청하기">리포트 신청</a>
   </header>
 
-  <!-- ===================== 히어로 ===================== -->
-  <!-- 이미지를 쓰려면 images/hero.jpg 파일을 넣으세요 (없으면 아래 CSS 비주얼 표시) -->
-  <section class="hero" data-hero-bg="images/hero.jpg">
-    <div class="stars"></div>
-    <div class="moon"></div>
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
+  <!-- ===================== Section 1 · Hero ===================== -->
+  <section class="hero">
+    <div class="hero-photo" data-bg="/images/hero.jpg" aria-hidden="true"></div>
+    <div class="stars" aria-hidden="true"></div>
+    <div class="hero-moon" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <h1>처음 받아보는<br /><span class="accent">나만의 사주 리포트</span></h1>
+      <p class="hero-sub">성격, 관계, 재물, 애정, 인생의 흐름을<br />한 편의 이야기처럼 차분히 정리해드립니다.</p>
 
-    <!-- 소나무 수묵 실루엣 -->
-    <svg class="pine" viewBox="0 0 120 200" preserveAspectRatio="xMidYMax meet">
-      <g fill="#0c0a14">
-        <rect x="55" y="90" width="8" height="110"/>
-        <path d="M59 20 C40 50 30 60 18 70 C40 66 50 70 59 78 C68 70 78 66 100 70 C88 60 78 50 59 20Z"/>
-        <path d="M59 50 C44 78 32 86 22 96 C42 92 52 96 59 104 C66 96 76 92 96 96 C86 86 74 78 59 50Z"/>
-        <path d="M59 84 C46 108 36 116 28 124 C44 120 53 124 59 130 C65 124 74 120 90 124 C82 116 72 108 59 84Z"/>
-      </g>
-    </svg>
+      <div class="price-tag">
+        <span class="pt-name">기본 사주 리포트</span>
+        <span class="pt-price">19,000<small>원</small></span>
+      </div>
+      <p class="hero-note">생년월일과 태어난 시간을 바탕으로 살펴보는 나만의 사주 해석</p>
 
-    <div class="mountain m1"></div>
-    <div class="mountain m2"></div>
-
-    <div class="hero-inner wrap">
-      <div class="hero-slide active">
-        <h1>당신의 운명을 읽다</h1>
-        <p>사주로 인생의 방향을 찾아보세요.<br />타고난 기운 속에 담긴 답을 함께 풀어드립니다.</p>
-        <a class="btn btn-red btn-lg" href="#services">사주 보러가기</a>
-      </div>
-      <div class="hero-slide">
-        <h1>때를 아는 지혜</h1>
-        <p>나아갈 때와 머무를 때.<br />사주는 인생의 흐름을 읽는 오래된 지혜입니다.</p>
-        <a class="btn btn-red btn-lg" href="#services">사주 보러가기</a>
-      </div>
-      <div class="hero-slide">
-        <h1>카톡으로 간편 상담</h1>
-        <p>복잡한 절차 없이 채팅창으로 신청하세요.<br />생년월일시만 알려주시면 됩니다.</p>
-        <a class="btn btn-kakao btn-lg" data-kakao href="#">카카오톡으로 신청하기</a>
-      </div>
+      <a href="/apply" class="btn btn-primary btn-lg" aria-label="내 사주 리포트 신청하기">내 사주 리포트 신청하기</a>
     </div>
-
-    <div class="hero-dots" id="heroDots"></div>
-    <div class="scroll-hint">SCROLL ↓</div>
   </section>
 
-  <!-- ===================== 사주란? (소개) ===================== -->
-  <section class="section hanji" id="about">
+  <!-- ===================== Section 2 · 공감 ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">REFLECTION</span>
+      <h2 class="sec-title">문득, 이런 생각이 들 때가 있습니다</h2>
+      <hr class="rule" />
+    </div>
     <div class="wrap">
-      <h2 class="section-title">사주(四柱)란 무엇인가</h2>
-      <div class="divider"></div>
-      <p class="section-sub">
-        태어난 연·월·일·시 네 기둥(四柱)에 담긴 음양오행의 기운으로
-        타고난 성정과 인생의 흐름을 읽는, 천 년을 이어온 동양의 지혜입니다.
+      <div class="empathy-grid">
+        <div class="empathy-card reveal"><span class="num">1</span><p>나는 어떤 기질을 가지고 태어났을까?</p></div>
+        <div class="empathy-card reveal"><span class="num">2</span><p>왜 비슷한 관계와 선택이 반복될까?</p></div>
+        <div class="empathy-card reveal"><span class="num">3</span><p>재물과 일의 흐름은 어떤 방향으로 흘러갈까?</p></div>
+        <div class="empathy-card reveal"><span class="num">4</span><p>앞으로의 시간은 어떻게 준비하면 좋을까?</p></div>
+      </div>
+      <p class="empathy-quote reveal">사주는 미래를 단정하는 답이 아니라,<br />나를 이해하고 삶의 흐름을 살펴보는 하나의 지도입니다.</p>
+    </div>
+  </section>
+
+  <!-- ===================== Section 3 · 상품 소개 ===================== -->
+  <section class="section bg-cream">
+    <div class="wrap center">
+      <span class="eyebrow">ABOUT</span>
+      <h2 class="sec-title">단순한 운세가 아닌,<br />나를 이해하는 사주 리포트</h2>
+      <hr class="rule" />
+      <p class="sec-lead">
+        기본 사주 리포트는 생년월일과 태어난 시간을 바탕으로
+        타고난 성향, 관계 방식, 재물의 흐름, 애정의 결,
+        그리고 인생 방향을 간결하게 정리해드립니다.<br /><br />
+        어려운 명리 용어만 나열하지 않고,
+        실제 삶에서 이해할 수 있는 문장으로 풀어드립니다.
       </p>
-      <div class="intro-grid">
-        <div class="intro-card reveal">
-          <span class="sym">命</span>
-          <h3>타고난 명(命)</h3>
-          <p>나의 본래 기질과 강점, 약점을 이해하고 나다운 길을 찾습니다.</p>
-        </div>
-        <div class="intro-card reveal">
-          <span class="sym">運</span>
-          <h3>흐르는 운(運)</h3>
-          <p>대운과 세운의 흐름을 읽어 나아갈 때와 기다릴 때를 가늠합니다.</p>
-        </div>
-        <div class="intro-card reveal">
-          <span class="sym">緣</span>
-          <h3>이어진 연(緣)</h3>
-          <p>사람과 사람 사이의 인연과 관계의 결을 헤아립니다.</p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- ===================== 신뢰 지표 밴드 (숫자는 자유롭게 수정하세요) ===================== -->
-  <section class="stats-band">
-    <div class="wrap stats-grid">
-      <div class="stat reveal"><span class="num">四</span><div class="label">종합·궁합·자녀·운세</div></div>
-      <div class="stat reveal"><span class="num">1:1</span><div class="label">카카오톡 맞춤 상담</div></div>
-      <div class="stat reveal"><span class="num">24h</span><div class="label">언제든 신청 가능</div></div>
-      <div class="stat reveal"><span class="num">정성</span><div class="label">한 분 한 분 직접 풀이</div></div>
+  <!-- ===================== Section 4 · 기본 리포트 구성 ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">CONTENTS</span>
+      <h2 class="sec-title">기본 사주 리포트에는 이런 내용이 담겨 있습니다</h2>
+      <hr class="rule" />
     </div>
-  </section>
-
-  <!-- ===================== 서비스 카드 ===================== -->
-  <section class="section hanji" id="services" style="padding-top:0;">
     <div class="wrap">
-      <h2 class="section-title">명리당 사주</h2>
-      <div class="divider"></div>
-      <p class="section-sub">궁금한 주제를 고르세요. 카드를 누르면 자세한 안내를 볼 수 있습니다.</p>
-
-      <div class="cards">
-        <a class="card reveal" href="services/jonghap.html">
-          <div class="card-thumb thumb-jong" data-bg="images/card-jonghap.jpg"><span class="glyph">命</span></div>
-          <div class="card-body">
-            <h3>종합사주</h3>
-            <p>나의 타고난 운명과 앞으로의 운세를 폭넓게 풀이합니다.</p>
-            <span class="card-more">자세히 보기 →</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="services/janyeo.html">
-          <div class="card-thumb thumb-jan" data-bg="images/card-janyeo.jpg"><span class="glyph">子</span></div>
-          <div class="card-body">
-            <h3>자녀사주</h3>
-            <p>우리 아이의 타고난 기질과 재능, 자라날 길을 알아봅니다.</p>
-            <span class="card-more">자세히 보기 →</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="services/gunghap.html">
-          <div class="card-thumb thumb-gung" data-bg="images/card-gunghap.jpg"><span class="glyph">緣</span></div>
-          <div class="card-body">
-            <h3>궁합사주</h3>
-            <p>두 사람의 운명적 인연과 관계의 결을 확인하세요.</p>
-            <span class="card-more">자세히 보기 →</span>
-          </div>
-        </a>
-
-        <a class="card reveal" href="services/unse.html">
-          <div class="card-thumb thumb-unse" data-bg="images/card-unse.jpg"><span class="glyph">運</span></div>
-          <div class="card-body">
-            <h3>오늘의 운세</h3>
-            <p>오늘 하루의 기운과 조심할 점을 짧게 짚어드립니다.</p>
-            <span class="card-more">자세히 보기 →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 무료 서비스 ===================== -->
-  <section class="section hanji" id="free">
-    <div class="wrap">
-      <h2 class="section-title">무료로 보는 운세</h2>
-      <div class="divider"></div>
-      <p class="section-sub">가볍게 오늘의 기운부터 확인해 보세요. 더 깊은 풀이는 카톡 상담으로 이어집니다.</p>
-      <div class="mini-cards">
-        <a class="mini-card reveal" data-kakao href="#">
-          <div class="ic">日</div>
-          <h3>오늘의 운세</h3>
-          <p>오늘 하루의 기운</p>
-        </a>
-        <a class="mini-card reveal" data-kakao href="#">
-          <div class="ic">支</div>
-          <h3>띠별 운세</h3>
-          <p>나의 띠로 보는 흐름</p>
-        </a>
-        <a class="mini-card reveal" data-kakao href="#">
-          <div class="ic">星</div>
-          <h3>별자리 운세</h3>
-          <p>별자리로 보는 오늘</p>
-        </a>
-        <a class="mini-card reveal" data-kakao href="#">
-          <div class="ic">名</div>
-          <h3>이름 풀이</h3>
-          <p>이름에 담긴 기운</p>
-        </a>
-      </div>
-      <p class="free-note">※ 카드를 누르면 카카오톡 채팅으로 연결됩니다.</p>
-    </div>
-  </section>
-
-  <!-- ===================== 후기 (예시입니다 — 실제 후기로 교체하세요) ===================== -->
-  <section class="section reviews">
-    <div class="wrap">
-      <h2 class="section-title">상담 후기</h2>
-      <div class="divider"></div>
-      <p class="section-sub">명리당과 함께한 분들의 이야기입니다.</p>
-
-      <div class="review-track-wrap">
-        <div class="review-track" id="reviewTrack">
-          <!-- 예시 후기 1 -->
-          <div class="review-card">
-            <div class="review-inner">
-              <div class="review-stars">★★★★★</div>
-              <p class="review-text">막막했던 진로 고민을 사주로 차분히 짚어주셔서 마음이 한결 가벼워졌어요. 따뜻하게 설명해 주신 게 기억에 남습니다.</p>
-              <div class="review-meta"><span class="name">김○○</span> · 종합사주</div>
-            </div>
-          </div>
-          <!-- 예시 후기 2 -->
-          <div class="review-card">
-            <div class="review-inner">
-              <div class="review-stars">★★★★★</div>
-              <p class="review-text">결혼을 앞두고 궁합을 봤는데, 서로 맞춰가야 할 부분을 구체적으로 알려주셔서 큰 도움이 됐습니다.</p>
-              <div class="review-meta"><span class="name">이○○</span> · 궁합사주</div>
-            </div>
-          </div>
-          <!-- 예시 후기 3 -->
-          <div class="review-card">
-            <div class="review-inner">
-              <div class="review-stars">★★★★★</div>
-              <p class="review-text">아이 기질을 이해하고 나니 대하는 마음가짐이 달라졌어요. 자녀사주 받길 잘했다 싶습니다.</p>
-              <div class="review-meta"><span class="name">박○○</span> · 자녀사주</div>
-            </div>
-          </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+          <h3>나의 기질</h3>
+          <ul><li>성격 특성</li><li>타고난 성향</li><li>강점과 약점</li></ul>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M13.5 16c1-.7 1.7-1 2.5-1 2.5 0 5 2 5 5"/></svg></div>
+          <h3>관계 패턴</h3>
+          <ul><li>인간관계 방식</li><li>가까워지는 흐름</li><li>반복되는 관계 습관</li></ul>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></div>
+          <h3>재물 흐름</h3>
+          <ul><li>돈을 대하는 성향</li><li>재물 흐름 요약</li><li>금전 관리 방향</li></ul>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.4-7-9.5C5 7.5 7 6 9 6c1.6 0 2.6 1 3 2 .4-1 1.4-2 3-2 2 0 4 1.5 4 4.5C19 15.6 12 20 12 20z"/></svg></div>
+          <h3>애정 흐름</h3>
+          <ul><li>연애 스타일</li><li>인연에서 나타나는 패턴</li><li>관계에서 중요한 포인트</li></ul>
+        </div>
+        <div class="feature-card reveal">
+          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-6-6 4-4 6z"/></svg></div>
+          <h3>인생 방향</h3>
+          <ul><li>현재 흐름 요약</li><li>앞으로의 선택 방향</li><li>종합 조언</li></ul>
+        </div>
+        <div class="feature-card reveal" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:linear-gradient(160deg,#15304a,var(--navy));color:var(--cream);border:0;">
+          <h3 style="color:#fff;">한 편의 이야기처럼</h3>
+          <p style="color:rgba(246,239,227,.85);margin:8px 0 0;font-size:.96rem;">항목들이 따로 놀지 않고, 나라는 사람의 흐름으로 자연스럽게 이어집니다.</p>
         </div>
       </div>
-      <div class="review-dots" id="reviewDots"></div>
     </div>
   </section>
 
-  <!-- ===================== 카톡 상담 CTA ===================== -->
-  <section class="section cta" id="contact">
-    <div class="stars"></div>
-    <div class="cta-inner wrap">
-      <h2>카카오톡으로 사주 상담 신청하기</h2>
-      <p>
-        아래 버튼을 누르면 채팅창이 열립니다.<br />
-        <strong>이름 · 생년월일 · 태어난 시간 · 궁금한 점</strong>을 남겨주시면 안내해 드립니다.
+  <!-- ===================== Section 5 · 프리미엄 안내 ===================== -->
+  <section class="section bg-cream">
+    <div class="wrap center">
+      <span class="eyebrow">UPGRADE</span>
+      <h2 class="sec-title">더 깊은 해석이 필요하다면<br />프리미엄 리포트도 선택할 수 있습니다</h2>
+      <hr class="rule" />
+      <p class="sec-lead">
+        기본 리포트가 핵심 흐름을 간결하게 정리한다면,
+        프리미엄 사주 리포트는 건강, 직업, 결혼운, 인생의 큰 흐름까지 더 자세히 살펴봅니다.
+        카카오톡 상담 시 원하는 리포트 구성을 선택하실 수 있습니다.
       </p>
-      <div class="cta-actions">
-        <a class="btn btn-kakao btn-lg" data-kakao href="#">💬 카카오톡 채팅 열기</a>
-        <a class="btn btn-gold btn-lg" href="services/form.html">📝 신청서 작성하기</a>
+    </div>
+    <div class="wrap" style="margin-top:36px;">
+      <div class="compare">
+        <div class="plan basic reveal">
+          <span class="badge">기본 · 추천</span>
+          <div class="plan-name">기본 사주 리포트</div>
+          <div class="plan-price">19,000원</div>
+          <ul>
+            <li>성격과 기질</li>
+            <li>관계 패턴</li>
+            <li>재물 요약</li>
+            <li>애정 요약</li>
+            <li>인생 방향 요약</li>
+          </ul>
+        </div>
+        <div class="plan premium reveal">
+          <span class="badge">카톡에서 선택 가능</span>
+          <div class="plan-name">프리미엄 사주 리포트</div>
+          <div class="plan-price">39,000원</div>
+          <ul>
+            <li>성격 상세</li>
+            <li>관계 상세</li>
+            <li>직업 적성</li>
+            <li>재물운 상세</li>
+            <li>애정운 상세</li>
+            <li>건강 체질</li>
+            <li>결혼운</li>
+            <li>인생의 큰 흐름</li>
+            <li>종합 해석</li>
+          </ul>
+        </div>
       </div>
-      <p class="cta-note">상담 시간 · 오전 10시 ~ 오후 9시 (요청은 24시간 가능, 순차 답변)</p>
+      <p class="compare-note">먼저 기본 리포트로 시작하고, 더 깊은 해석이 필요하면 카카오톡에서 프리미엄으로 안내받으실 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- ===================== Section 6 · 결과물 미리보기 ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">PREVIEW</span>
+      <h2 class="sec-title">구매 전, 리포트 구성을 미리 확인해보세요</h2>
+      <hr class="rule" />
+      <p class="sec-lead">결과는 단순한 한두 줄 운세가 아니라, 항목별로 읽을 수 있는 리포트 형식으로 제공됩니다.</p>
+    </div>
+    <div class="wrap preview-wrap" style="margin-top:36px;">
+      <!-- 모바일 결과 목업 (이미지 없이 CSS로 구성) -->
+      <div class="phone reveal" aria-hidden="true">
+        <div class="screen">
+          <div class="ph-top"><span class="ph-dot"></span></div>
+          <div class="ph-title">나만의 사주 리포트</div>
+          <div class="ph-sub">성격 · 관계 · 재물 · 애정 · 인생 흐름</div>
+          <div class="ph-chapter">CHAPTER 1. 나의 기질</div>
+          <div class="ph-line"></div><div class="ph-line"></div><div class="ph-line s"></div>
+          <div class="ph-quote">겉으로는 차분해 보여도, 내면에는 스스로 기준을 세우고 지켜가려는 힘이 강한 편입니다.</div>
+          <div class="ph-chapter">CHAPTER 2. 관계 패턴</div>
+          <div class="ph-line"></div><div class="ph-line s"></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <ul class="preview-list">
+          <li><b>모바일 결과 화면</b> — 손안에서 편하게 읽기</li>
+          <li><b>리포트 목차</b> — 항목별로 구성</li>
+          <li><b>실제 해석 문장 예시</b> — 이해하기 쉬운 문장</li>
+          <li><b>챕터별 상세 내용</b> — 성격·관계·재물·애정·인생</li>
+          <li><b>카카오톡 전달 안내</b> — 결제 확인 후 순차 전달</li>
+        </ul>
+        <div class="sample-quote">
+          “당신은 겉으로는 차분해 보여도, 내면에는 스스로 기준을 세우고 지켜가려는 힘이 강한 편입니다.
+          관계에서는 깊이를 중요하게 여기며, 쉽게 마음을 열기보다 시간을 두고 신뢰를 쌓는 흐름이 나타납니다.”
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 7 · 가격 ===================== -->
+  <section class="section bg-navy">
+    <div class="wrap">
+      <div class="price-box">
+        <div class="pb-name">기본 사주 리포트</div>
+        <div class="pb-price">19,000원</div>
+        <ul>
+          <li>개인 맞춤 사주 요약 분석</li>
+          <li>성격, 관계, 재물, 애정 흐름</li>
+          <li>인생 방향 간단 조언</li>
+          <li>카카오톡 전달</li>
+          <li>신청 후 순차적으로 안내</li>
+        </ul>
+        <a href="/apply" class="btn btn-primary btn-lg btn-block" aria-label="카톡으로 신청하기">카톡으로 신청하기</a>
+        <p class="pb-note">
+          신청 정보를 남겨주시면 카카오톡에서 결제 및 진행 안내를 도와드립니다.<br />
+          더 자세한 프리미엄 리포트가 필요하신 경우 카카오톡에서 함께 안내드립니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 8 · 왜 다른가 ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">WHY</span>
+      <h2 class="sec-title">왜 이 사주 리포트가 다를까요?</h2>
+      <hr class="rule" />
+    </div>
+    <div class="wrap">
+      <div class="points">
+        <div class="point reveal"><div class="pn">01</div><h3>삶의 흐름을 이야기처럼 풀어냅니다</h3><p>단편적인 운세보다 성격, 관계, 재물, 애정을 연결해 하나의 흐름으로 읽습니다.</p></div>
+        <div class="point reveal"><div class="pn">02</div><h3>쉬운 문장으로 이해할 수 있습니다</h3><p>어려운 명리 용어보다 일상적인 언어로 풀어 설명합니다.</p></div>
+        <div class="point reveal"><div class="pn">03</div><h3>필요한 내용을 간결하게 정리합니다</h3><p>처음 사주 리포트를 받아보는 분도 부담 없이 읽을 수 있도록 핵심 중심으로 구성합니다.</p></div>
+        <div class="point reveal"><div class="pn">04</div><h3>차분하고 고급스러운 리포트 경험</h3><p>수묵 감성의 디자인과 함께 읽는 순간의 몰입감을 높입니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 9 · 추천 ===================== -->
+  <section class="section bg-cream">
+    <div class="wrap center">
+      <span class="eyebrow">FOR YOU</span>
+      <h2 class="sec-title">이런 분께 추천드립니다</h2>
+      <hr class="rule" />
+    </div>
+    <div class="wrap">
+      <ul class="checklist">
+        <li class="reveal"><span class="ck">✓</span>처음 사주 리포트를 받아보고 싶은 분</li>
+        <li class="reveal"><span class="ck">✓</span>나의 성향과 관계 패턴을 이해하고 싶은 분</li>
+        <li class="reveal"><span class="ck">✓</span>재물과 애정의 흐름을 가볍게 살펴보고 싶은 분</li>
+        <li class="reveal"><span class="ck">✓</span>앞으로의 방향을 차분히 정리하고 싶은 분</li>
+        <li class="reveal"><span class="ck">✓</span>프리미엄 리포트 신청 전 기본 해석을 먼저 보고 싶은 분</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== Section 10 · 이용 방법 ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">HOW IT WORKS</span>
+      <h2 class="sec-title">이용 방법은 간단합니다</h2>
+      <hr class="rule" />
+    </div>
+    <div class="wrap">
+      <div class="steps">
+        <div class="step reveal"><div class="sn">1</div><h3>정보 입력</h3><p>이름, 성별, 생년월일, 양력/음력, 태어난 시간을 입력합니다.</p></div>
+        <div class="step reveal"><div class="sn">2</div><h3>카카오톡 연결</h3><p>신청 후 카카오톡으로 연결되어 결제 및 진행 안내를 받습니다.</p></div>
+        <div class="step reveal"><div class="sn">3</div><h3>리포트 선택</h3><p>기본 리포트 또는 프리미엄 리포트 중 원하는 구성을 안내받습니다.</p></div>
+        <div class="step reveal"><div class="sn">4</div><h3>리포트 전달</h3><p>결제 확인 후 성격, 관계, 재물, 애정, 인생 흐름이 정리된 리포트를 받아봅니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 11 · 후기 (예시 후기 — 실제 운영 전 교체) ===================== -->
+  <section class="section bg-cream">
+    <div class="wrap center">
+      <span class="eyebrow">REVIEWS</span>
+      <h2 class="sec-title">리포트를 받아보신 분들의 이야기</h2>
+      <hr class="rule" />
+    </div>
+    <div class="wrap">
+      <!-- sample-reviews: 아래 후기는 예시입니다. 실제 후기로 교체하세요. -->
+      <div class="reviews-grid">
+        <div class="review reveal">
+          <div class="stars" aria-label="별점 5점">★★★★★</div>
+          <p>제 성향을 차분히 정리해줘서 생각할 부분이 많았습니다. 앞으로 어떤 방향으로 가야 할지 조금 더 선명해졌어요.</p>
+          <div class="who">김○○님 · 48세 · 서울</div>
+        </div>
+        <div class="review reveal">
+          <div class="stars" aria-label="별점 5점">★★★★★</div>
+          <p>재물과 관계 부분을 같이 볼 수 있어서 좋았습니다. 막연했던 고민을 정리하는 데 도움이 되었습니다.</p>
+          <div class="who">이○○님 · 52세 · 부산</div>
+        </div>
+        <div class="review reveal">
+          <div class="stars" aria-label="별점 5점">★★★★★</div>
+          <p>관계에서 반복되는 제 패턴을 이해하게 됐습니다. 차분하게 읽을 수 있어서 좋았어요.</p>
+          <div class="who">박○○님 · 46세 · 대구</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 12 · FAQ ===================== -->
+  <section class="section bg-cream-lt">
+    <div class="wrap center">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="sec-title">자주 묻는 질문</h2>
+      <hr class="rule" />
+    </div>
+    <div class="wrap">
+      <div class="faq">
+        <details>
+          <summary>태어난 시간을 몰라도 볼 수 있나요?</summary>
+          <div class="faq-body">태어난 시간을 입력하면 더 세밀한 해석이 가능합니다. 시간을 모르는 경우에도 기본적인 생년월일 기준 해석은 확인할 수 있습니다.</div>
+        </details>
+        <details>
+          <summary>결과는 바로 확인할 수 있나요?</summary>
+          <div class="faq-body">신청 후 카카오톡에서 결제 및 진행 안내를 받은 뒤, 순차적으로 리포트를 전달드립니다.</div>
+        </details>
+        <details>
+          <summary>기본 리포트와 프리미엄 리포트는 무엇이 다른가요?</summary>
+          <div class="faq-body">기본 리포트는 성격, 관계, 재물, 애정, 인생 방향을 중심으로 간결하게 정리합니다. 프리미엄 리포트는 건강, 직업, 결혼운, 인생의 큰 흐름까지 더 자세히 살펴봅니다.</div>
+        </details>
+        <details>
+          <summary>사주를 처음 봐도 이해할 수 있나요?</summary>
+          <div class="faq-body">네. 어려운 명리 용어보다 일상적인 표현으로 풀어 설명합니다.</div>
+        </details>
+        <details>
+          <summary>이 리포트는 미래를 확정해서 말하나요?</summary>
+          <div class="faq-body">아닙니다. 사주는 삶의 흐름과 성향을 살펴보는 참고 자료입니다. 결과를 바탕으로 자신을 이해하고 선택을 정리하는 데 도움을 주는 콘텐츠입니다.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Section 13 · 최종 CTA ===================== -->
+  <section class="section bg-navy final-cta">
+    <div class="cta-photo" data-bg="/images/hero.jpg" aria-hidden="true"></div>
+    <div class="wrap inner">
+      <h2>나의 흐름을 알고 나면,<br />선택이 조금 더 선명해집니다</h2>
+      <p>지금의 나를 이해하고 앞으로의 방향을 차분히 살펴보세요.</p>
+      <a href="/apply" class="btn btn-primary btn-lg" aria-label="내 사주 리포트 받아보기">내 사주 리포트 받아보기</a>
+      <p class="cta-foot">성격 · 관계 · 재물 · 애정 · 인생 흐름 요약</p>
     </div>
   </section>
 
   <!-- ===================== 푸터 ===================== -->
   <footer class="site-footer">
     <div class="wrap">
-      <div class="brand-hanja">命理堂</div>
-      <p>명리당 · 당신의 운명을 읽는 곳</p>
-      <a class="foot-kakao" data-kakao href="#">카카오톡 상담 신청</a>
-      <small>© 2026 명리당(命理堂). 본 사이트의 사주 상담은 참고용이며, 중요한 결정은 신중히 하시기 바랍니다.</small>
+      <div class="nm">명리당</div>
+      <p>당신의 흐름을 차분히 살펴보는 사주 리포트</p>
+      <small>© 2026 명리당. 본 사주 리포트는 자기 이해를 돕는 참고 자료이며, 미래를 확정하지 않습니다.<br />중요한 결정은 신중히 하시기 바랍니다.</small>
     </div>
   </footer>
 
-  <!-- ===================== 플로팅 카톡 상담 버튼 ===================== -->
-  <a class="kakao-float" data-kakao href="#" aria-label="카카오톡 상담">
-    <span class="bubble">💬</span>
-    <span class="label-long">카톡 상담</span>
-  </a>
+  <!-- ===================== 고정 CTA ===================== -->
+  <div class="sticky-cta">
+    <a href="/apply" class="btn btn-primary" aria-label="19,000원 리포트 신청하기">19,000원 리포트 신청하기</a>
+  </div>
 
-  <script src="js/main.js"></script>
+  <script src="/js/landing.js"></script>
 </body>
 </html>
