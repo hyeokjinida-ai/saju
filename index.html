@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>명리당(命理堂) · 당신의 운명을 읽다</title>
+  <meta name="description" content="명리당 — 사주로 인생의 방향을 찾아보세요. 종합사주, 궁합사주, 자녀사주, 오늘의 운세. 카카오톡으로 간편 상담 신청." />
+
+  <!-- 전통 한국 느낌 명조/붓글씨 서체 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Song+Myung&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== 헤더 ===================== -->
+  <!-- 브랜드명 "명리당 / 命理堂" ← 원하는 상호로 변경하세요 -->
+  <header class="site-header" id="header">
+    <a href="index.html" class="brand">
+      <span class="brand-kr">운명을 읽는 곳</span>
+      <span class="brand-hanja">命理堂</span>
+    </a>
+    <nav class="nav">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">홈</a></li>
+        <li><a href="services/jonghap.html">종합사주</a></li>
+        <li><a href="services/gunghap.html">궁합사주</a></li>
+        <li><a href="services/janyeo.html">자녀사주</a></li>
+        <li><a href="services/unse.html">오늘의 운세</a></li>
+        <li><a href="#contact">상담안내</a></li>
+      </ul>
+      <a class="nav-kakao" data-kakao href="#">카카오 상담</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================== 히어로 ===================== -->
+  <section class="hero">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+
+    <!-- 소나무 수묵 실루엣 -->
+    <svg class="pine" viewBox="0 0 120 200" preserveAspectRatio="xMidYMax meet">
+      <g fill="#0c0a14">
+        <rect x="55" y="90" width="8" height="110"/>
+        <path d="M59 20 C40 50 30 60 18 70 C40 66 50 70 59 78 C68 70 78 66 100 70 C88 60 78 50 59 20Z"/>
+        <path d="M59 50 C44 78 32 86 22 96 C42 92 52 96 59 104 C66 96 76 92 96 96 C86 86 74 78 59 50Z"/>
+        <path d="M59 84 C46 108 36 116 28 124 C44 120 53 124 59 130 C65 124 74 120 90 124 C82 116 72 108 59 84Z"/>
+      </g>
+    </svg>
+
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+
+    <div class="hero-inner wrap">
+      <div class="hero-slide active">
+        <h1>당신의 운명을 읽다</h1>
+        <p>사주로 인생의 방향을 찾아보세요.<br />타고난 기운 속에 담긴 답을 함께 풀어드립니다.</p>
+        <a class="btn btn-red btn-lg" href="#services">사주 보러가기</a>
+      </div>
+      <div class="hero-slide">
+        <h1>때를 아는 지혜</h1>
+        <p>나아갈 때와 머무를 때.<br />사주는 인생의 흐름을 읽는 오래된 지혜입니다.</p>
+        <a class="btn btn-red btn-lg" href="#services">사주 보러가기</a>
+      </div>
+      <div class="hero-slide">
+        <h1>카톡으로 간편 상담</h1>
+        <p>복잡한 절차 없이 채팅창으로 신청하세요.<br />생년월일시만 알려주시면 됩니다.</p>
+        <a class="btn btn-kakao btn-lg" data-kakao href="#">카카오톡으로 신청하기</a>
+      </div>
+    </div>
+
+    <div class="hero-dots" id="heroDots"></div>
+    <div class="scroll-hint">SCROLL ↓</div>
+  </section>
+
+  <!-- ===================== 사주란? (소개) ===================== -->
+  <section class="section hanji" id="about">
+    <div class="wrap">
+      <h2 class="section-title">사주(四柱)란 무엇인가</h2>
+      <div class="divider"></div>
+      <p class="section-sub">
+        태어난 연·월·일·시 네 기둥(四柱)에 담긴 음양오행의 기운으로
+        타고난 성정과 인생의 흐름을 읽는, 천 년을 이어온 동양의 지혜입니다.
+      </p>
+      <div class="intro-grid">
+        <div class="intro-card reveal">
+          <span class="sym">命</span>
+          <h3>타고난 명(命)</h3>
+          <p>나의 본래 기질과 강점, 약점을 이해하고 나다운 길을 찾습니다.</p>
+        </div>
+        <div class="intro-card reveal">
+          <span class="sym">運</span>
+          <h3>흐르는 운(運)</h3>
+          <p>대운과 세운의 흐름을 읽어 나아갈 때와 기다릴 때를 가늠합니다.</p>
+        </div>
+        <div class="intro-card reveal">
+          <span class="sym">緣</span>
+          <h3>이어진 연(緣)</h3>
+          <p>사람과 사람 사이의 인연과 관계의 결을 헤아립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 서비스 카드 ===================== -->
+  <section class="section hanji" id="services" style="padding-top:0;">
+    <div class="wrap">
+      <h2 class="section-title">명리당 사주</h2>
+      <div class="divider"></div>
+      <p class="section-sub">궁금한 주제를 고르세요. 카드를 누르면 자세한 안내를 볼 수 있습니다.</p>
+
+      <div class="cards">
+        <a class="card reveal" href="services/jonghap.html">
+          <div class="card-thumb thumb-jong"><span class="glyph">命</span></div>
+          <div class="card-body">
+            <h3>종합사주</h3>
+            <p>나의 타고난 운명과 앞으로의 운세를 폭넓게 풀이합니다.</p>
+            <span class="card-more">자세히 보기 →</span>
+          </div>
+        </a>
+
+        <a class="card reveal" href="services/janyeo.html">
+          <div class="card-thumb thumb-jan"><span class="glyph">子</span></div>
+          <div class="card-body">
+            <h3>자녀사주</h3>
+            <p>우리 아이의 타고난 기질과 재능, 자라날 길을 알아봅니다.</p>
+            <span class="card-more">자세히 보기 →</span>
+          </div>
+        </a>
+
+        <a class="card reveal" href="services/gunghap.html">
+          <div class="card-thumb thumb-gung"><span class="glyph">緣</span></div>
+          <div class="card-body">
+            <h3>궁합사주</h3>
+            <p>두 사람의 운명적 인연과 관계의 결을 확인하세요.</p>
+            <span class="card-more">자세히 보기 →</span>
+          </div>
+        </a>
+
+        <a class="card reveal" href="services/unse.html">
+          <div class="card-thumb thumb-unse"><span class="glyph">運</span></div>
+          <div class="card-body">
+            <h3>오늘의 운세</h3>
+            <p>오늘 하루의 기운과 조심할 점을 짧게 짚어드립니다.</p>
+            <span class="card-more">자세히 보기 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 카톡 상담 CTA ===================== -->
+  <section class="section cta" id="contact">
+    <div class="stars"></div>
+    <div class="cta-inner wrap">
+      <h2>카카오톡으로 사주 상담 신청하기</h2>
+      <p>
+        아래 버튼을 누르면 채팅창이 열립니다.<br />
+        <strong>이름 · 생년월일 · 태어난 시간 · 궁금한 점</strong>을 남겨주시면 안내해 드립니다.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-kakao btn-lg" data-kakao href="#">💬 카카오톡 채팅 열기</a>
+        <a class="btn btn-gold btn-lg" href="#services">서비스 다시 보기</a>
+      </div>
+      <p class="cta-note">상담 시간 · 오전 10시 ~ 오후 9시 (요청은 24시간 가능, 순차 답변)</p>
+    </div>
+  </section>
+
+  <!-- ===================== 푸터 ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="brand-hanja">命理堂</div>
+      <p>명리당 · 당신의 운명을 읽는 곳</p>
+      <a class="foot-kakao" data-kakao href="#">카카오톡 상담 신청</a>
+      <small>© 2026 명리당(命理堂). 본 사이트의 사주 상담은 참고용이며, 중요한 결정은 신중히 하시기 바랍니다.</small>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
