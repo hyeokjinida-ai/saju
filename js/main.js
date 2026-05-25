@@ -5,7 +5,7 @@
 /* ★★★★★  카카오톡 오픈채팅 링크를 여기에 넣으세요  ★★★★★
    예) const KAKAO_LINK = "https://open.kakao.com/o/abcd1234";
    이 한 줄만 바꾸면 사이트의 모든 카톡 버튼에 적용됩니다.    */
-const KAKAO_LINK = "#";
+const KAKAO_LINK = "https://open.kakao.com/o/sgEYBxwi";
 /* ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
 
 document.addEventListener("DOMContentLoaded", function () {
