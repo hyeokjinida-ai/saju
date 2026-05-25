@@ -1,6 +1,9 @@
 # 로컬 미리보기 도우미 (배포에 불필요)
 .claude/
 
+# 원본 이미지(변환 전, 용량 큼) — 변환된 .jpg만 배포
+*.jpg.png
+
 # OS
 Thumbs.db
 desktop.ini
