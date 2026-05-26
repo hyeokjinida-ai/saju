@@ -17,10 +17,10 @@ const CONFIG = {
 
   // ▼ 상품명 / 가격 (바꾸면 신청·요약에 반영)
   products: {
-    basic:   { name: "명운록 기본 사주 리포트",   price: 19000 },
-    premium: { name: "명운록 프리미엄 사주 리포트", price: 39000 },
+    basic:   { name: "명운록 기본 사주 기록",   price: 19000 },
+    premium: { name: "명운록 프리미엄 사주 기록", price: 39000 },
     // 추후 확장 상품 (현재 랜딩에는 노출하지 않음)
-    comprehensive: { name: "명운록 종합 사주 리포트", price: 79000 }
+    comprehensive: { name: "명운록 종합 사주 기록", price: 79000 }
   },
 
   // localStorage 키
