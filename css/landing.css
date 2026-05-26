@@ -338,6 +338,70 @@ p { word-break: keep-all; }
   .ct-col + .ct-col { border-left: 0; }
 }
 
+/* ============================================================
+   챕터형 이미지 화보 (한 권의 기록 미리보기)
+   ============================================================ */
+/* 히어로 2단 (텍스트 + 리포트 표지 목업) */
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; }
+.hero-text { max-width: 560px; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 30px; }
+.hero-ctas .btn-ghost { color: var(--gold-soft); border-color: rgba(184,146,74,.5); }
+
+.cover-mock {
+  width: 248px; max-width: 78%; margin: 0 auto; aspect-ratio: 3 / 4;
+  background:
+    radial-gradient(120% 60% at 70% 18%, rgba(227,207,159,.22), transparent 60%),
+    linear-gradient(160deg, #15273d, #0a131e);
+  border: 1px solid rgba(184,146,74,.45);
+  box-shadow: 0 30px 60px rgba(0,0,0,.45);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 34px 26px; text-align: center; position: relative;
+}
+.cover-mock .cm-mark { color: var(--gold-soft); letter-spacing: 6px; font-size: .72rem; }
+.cover-mock .cm-line { width: 38px; height: 1px; background: var(--gold); opacity: .8; }
+.cover-mock .cm-title { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1.35rem; color: var(--white); line-height: 1.55; }
+.cover-mock .cm-sub { color: rgba(246,239,227,.7); font-size: .8rem; letter-spacing: 1px; }
+.cover-mock .seal { position: absolute; bottom: 18px; right: 18px; width: 38px; height: 38px; font-size: 1.05rem; }
+
+/* 챕터 배너 */
+.chapters { display: block; }
+.chapter {
+  position: relative;
+  min-height: 60vh;
+  display: flex; align-items: flex-end;
+  background-color: var(--navy);
+  background-size: cover; background-position: center;
+  overflow: hidden;
+}
+.chapter .ch-photo {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  opacity: 0; transition: opacity .9s ease;
+}
+.chapter .ch-photo.show { opacity: 1; }
+.chapter::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(rgba(11,26,42,.2) 0%, rgba(11,26,42,.3) 40%, rgba(11,26,42,.85) 100%);
+}
+.chapter .ch-text { position: relative; z-index: 3; width: 100%; padding: 0 0 52px; color: var(--cream); }
+.chapter.alt .ch-text { text-align: right; }
+.ch-num { display: block; color: var(--gold-soft); letter-spacing: 5px; font-size: .8rem; font-weight: 700; margin-bottom: 12px; }
+.ch-title { font-family: "Noto Serif KR", serif; font-size: clamp(1.7rem, 5.5vw, 2.5rem); margin: 0 0 10px; text-shadow: 0 2px 16px rgba(0,0,0,.55); }
+.ch-desc { margin: 0; color: rgba(246,239,227,.9); font-size: 1.05rem; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+
+/* 챕터별 임시 배경(실제 chapter-*.webp 추가 시 ch-photo가 덮음) */
+.chapter.ch-1 { background-image: url("/images/card-jonghap.jpg"); }
+.chapter.ch-2 { background-image: url("/images/card-gunghap.jpg"); }
+.chapter.ch-3 { background-image: url("/images/hero.jpg"); }
+.chapter.ch-4 { background-image: url("/images/card-unse.jpg"); }
+.chapter.ch-5 { background-image: url("/images/card-janyeo.jpg"); }
+
+@media (max-width: 820px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .hero-text { max-width: none; }
+  .chapter { min-height: 56vh; }
+  .chapter.alt .ch-text { text-align: left; }
+}
+
 /* ---------- buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
