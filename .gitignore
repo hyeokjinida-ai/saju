@@ -3,6 +3,7 @@
 
 # 원본 이미지(변환 전, 용량 큼) — 변환된 .jpg만 배포
 *.jpg.png
+*.webp.png
 
 # OS
 Thumbs.db
