@@ -5,6 +5,10 @@
 *.jpg.png
 *.webp.png
 
+# 디자인 핸드오프 임포트 (참고용)
+_design_import/
+_*.zip
+
 # OS
 Thumbs.db
 desktop.ini

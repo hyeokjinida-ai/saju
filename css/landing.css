@@ -6,16 +6,37 @@
 
 /* ---------- palette ---------- */
 :root {
-  --navy:       #071522;
-  --navy-2:     #0c2030;
-  --cream:      #F6EFE3;
-  --cream-lt:   #FBF7EF;
-  --gold:       #C49A4A;
-  --gold-soft:  #d8b878;
-  --ink:        #201A14;
-  --ink-soft:   #75685B;
-  --line:       #E5D7C2;
+  /* 기존 호환용 (값은 와인 톤으로 시프트) */
+  --navy:       #0d0608;
+  --navy-2:     #3a0d18;
+  --cream:      #e8dfd0;
+  --cream-lt:   #ede4d4;
+  --gold:       #d4af6a;
+  --gold-soft:  #a88b53;
+  --ink:        #14110d;
+  --ink-soft:   #3a2a1a;
+  --line:       #d8c9b0;
   --white:      #ffffff;
+  /* Claude Design 핸드오프 토큰 */
+  --night:      #0d0608;
+  --night-edge: #050204;
+  --wine:       #3a0d18;
+  --wine-2:     #4a0e1a;
+  --wine-deep:  #2a0a12;
+  --wine-soft:  #5a1822;
+  --paper:      #e8dfd0;
+  --paper-warm: #ede4d4;
+  --paper-deep: #d4c8af;
+  --brown:      #7d5a3a;
+  --bone:       #f0e6d2;
+  --bone-soft:  rgba(240,230,210,0.72);
+  --bone-faint: rgba(240,230,210,0.40);
+  --gold-bright:#e8c878;
+  --gold-pale:  rgba(212,175,106,0.18);
+  --gold-line:  rgba(212,175,106,0.4);
+  --seal:       #8b1e1e;
+  --kakao:      #FEE500;
+  --kakao-text: #191919;
 
   --maxw: 1080px;
   --radius: 16px;
@@ -409,7 +430,7 @@ body { background: var(--cream-lt); color: var(--ink); }
 
 /* 짙은 먹빛 섹션 (hero/미리보기/가격/최종) */
 .bg-ink {
-  background-color: #050f19; color: var(--cream);
+  background-color: var(--night); color: var(--bone);
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 200 200'%3E%3Cpath d='M100 22 A78 78 0 1 1 78 28' fill='none' stroke='%23C49A4A' stroke-opacity='0.10' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E"),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
@@ -937,4 +958,161 @@ body { background: var(--cream-lt); color: var(--ink); }
 @media (max-width: 360px) {
   body { font-size: 16px; }
   .wrap { padding: 0 16px; }
+}
+
+/* ============================================================
+   Claude Design 핸드오프 컴포넌트 (와인+코스모스)
+   ============================================================ */
+
+/* 폰트 추가 — Ma Shan Zheng / JetBrains Mono */
+.mono { font-family: "JetBrains Mono", monospace; }
+.brush { font-family: "Ma Shan Zheng", "Noto Serif KR", serif; }
+.text-pretty { text-wrap: pretty; }
+
+/* 골드 프레임 / 룰 / 다이아몬드 / 장식 */
+.gold-frame { position: relative; border: 1px solid var(--gold-line); padding: 30px 24px; }
+.gold-frame::before, .gold-frame::after,
+.gold-frame .gf-tr, .gold-frame .gf-bl {
+  content: ""; position: absolute; width: 12px; height: 12px;
+  border-color: var(--gold); border-style: solid; border-width: 0;
+}
+.gold-frame::before { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
+.gold-frame::after  { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.gold-rule {
+  height: 1px; width: 80%; margin: 12px auto;
+  background: linear-gradient(90deg, transparent, var(--gold) 18%, var(--gold) 82%, transparent);
+}
+.gold-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); display: inline-block; }
+.ornament { display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--gold); margin: 14px 0; }
+.ornament::before, .ornament::after { content: ""; flex: 0 0 36px; height: 1px; background: var(--gold-line); }
+
+/* 인장(작은 변형 — 기존 .seal과 별도) */
+.seal-sm {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; background: var(--seal); color: var(--bone);
+  font-family: "Ma Shan Zheng", serif; font-size: 1.1rem;
+  box-shadow: inset 0 0 0 1.5px rgba(240,230,210,.5);
+  transform: rotate(-6deg);
+}
+
+/* 글로우 */
+.glow-bone { text-shadow: 0 0 18px rgba(240,230,210,.35), 0 0 2px rgba(240,230,210,.5); }
+.glow-gold { text-shadow: 0 0 22px rgba(232,200,120,.42), 0 0 2px rgba(232,200,120,.7); }
+
+/* ===== 01 HERO 골드 프레임 명운록 ===== */
+.hero-mark {
+  max-width: 340px; margin: 0 auto 30px; text-align: center;
+  background: rgba(13,6,8,.4); padding: 28px 22px;
+}
+.hero-mark .est { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .4em; color: var(--bone-faint); margin-bottom: 18px; display: block; }
+.hero-mark .hanja { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: clamp(3.4rem, 14vw, 4.4rem); color: var(--gold-bright); letter-spacing: .1em; line-height: 1; }
+.hero-mark .kr { display: block; font-family: "Nanum Myeongjo", serif; font-size: .82rem; letter-spacing: .5em; color: var(--bone); margin-top: 16px; }
+.hero-mark .sub { display: block; font-size: .68rem; letter-spacing: .25em; color: var(--bone-soft); margin-top: 10px; }
+
+/* ===== 02 HERITAGE 계보 타임라인 ===== */
+.heritage-band { position: relative; padding: 70px 0 60px; color: var(--bone); background: var(--wine); overflow: hidden; }
+.heritage-band .vert-han { position: absolute; top: 30px; right: 22px; color: var(--gold-bright); font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1.4rem; writing-mode: vertical-rl; letter-spacing: .35em; opacity: .9; }
+.heritage-band h2 { color: var(--bone); }
+.heritage { max-width: 540px; margin: 30px auto 0; position: relative; padding-left: 36px; }
+.heritage::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 1px; background: linear-gradient(var(--gold), rgba(212,175,106,.15)); }
+.her-row { position: relative; padding: 18px 0; border-bottom: 1px dashed rgba(212,175,106,.18); }
+.her-row:last-child { border-bottom: 0; }
+.her-row::before { content: ""; position: absolute; left: -32px; top: 28px; width: 9px; height: 9px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 3px rgba(212,175,106,.18); }
+.her-row.cur::before { background: var(--gold-bright); box-shadow: 0 0 0 5px rgba(232,200,120,.22), 0 0 18px rgba(232,200,120,.45); }
+.her-era { font-family: "Ma Shan Zheng","Noto Serif KR",serif; color: var(--gold); font-size: 1.4rem; letter-spacing: .1em; }
+.her-row.cur .her-era { color: var(--gold-bright); }
+.her-year { font-family: "JetBrains Mono", monospace; font-size: .78rem; color: var(--bone-faint); margin-left: 10px; }
+.her-name { display: block; margin-top: 4px; font-size: .98rem; color: var(--bone-soft); }
+.her-row.cur .her-name { color: var(--bone); font-weight: 700; }
+
+/* ===== Concept 8자 명식 ===== */
+.saju-board { max-width: 380px; margin: 26px auto; }
+.saju-board .sb-header { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; padding: 12px 0; color: var(--gold-soft); font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1rem; letter-spacing: .15em; }
+.saju-board .sb-header .col-cur { color: var(--gold-bright); }
+.saju-board .sb-cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 14px 0 6px; }
+.saju-board .sb-cell { text-align: center; padding: 18px 4px; border: 1px solid var(--gold-pale); background: rgba(212,175,106,.04); }
+.saju-board .sb-cell.cur { border-color: var(--gold-bright); background: rgba(232,200,120,.08); box-shadow: 0 0 18px rgba(232,200,120,.15); }
+.saju-board .sb-han { font-family: "Ma Shan Zheng","Noto Serif KR",serif; color: var(--bone); font-size: 1.8rem; display: block; line-height: 1.2; }
+.saju-board .sb-cell.cur .sb-han { color: var(--gold-bright); }
+.saju-board .sb-han + .sb-han { margin-top: 4px; color: var(--bone-soft); }
+.saju-board .sb-role { display: block; margin-top: 6px; font-size: .7rem; color: var(--bone-faint); letter-spacing: .2em; }
+
+/* ===== How 카톡 채팅 미리보기 ===== */
+.chat-preview { max-width: 460px; margin: 30px auto 0; padding: 22px 18px; background: rgba(254,229,0,.05); border: 1px solid rgba(254,229,0,.18); border-radius: 14px; }
+.chat-bubble { max-width: 80%; padding: 12px 14px; border-radius: 14px; font-size: .94rem; line-height: 1.65; margin-bottom: 12px; }
+.chat-bubble.left  { background: var(--paper-warm); color: var(--ink); border-top-left-radius: 4px; }
+.chat-bubble.right { background: var(--kakao); color: var(--kakao-text); margin-left: auto; border-top-right-radius: 4px; }
+
+/* ===== Reviews 4.96 + 카드 ===== */
+.review-score { text-align: center; margin: 26px 0 18px; }
+.review-score .num { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 3.4rem; color: var(--gold-bright); line-height: 1; }
+.review-score .stars { color: var(--gold); letter-spacing: .3em; font-size: 1rem; margin-top: 8px; }
+.review-score .total { font-family: "JetBrains Mono", monospace; font-size: .8rem; color: var(--bone-soft); letter-spacing: .15em; margin-top: 8px; }
+.bg-ink .review-score .num { color: var(--gold-bright); }
+.review-cards { display: grid; gap: 14px; max-width: 560px; margin: 18px auto 0; }
+.review-card2 { position: relative; padding: 22px 22px 20px; background: rgba(212,175,106,.05); border: 1px solid var(--gold-pale); border-radius: 6px; }
+.review-card2 .rc-tag { display: inline-block; padding: 3px 10px; background: rgba(212,175,106,.15); color: var(--gold); font-size: .76rem; letter-spacing: .12em; font-weight: 700; }
+.review-card2 .rc-meta { display: inline-block; margin-left: 10px; font-size: .82rem; color: var(--bone-soft); }
+.review-card2 .rc-han { position: absolute; top: 14px; right: 16px; font-family: "Ma Shan Zheng","Noto Serif KR",serif; color: var(--gold); font-size: 1.4rem; opacity: .8; }
+.review-card2 .rc-text { margin: 14px 0 10px; color: var(--bone); font-size: .98rem; line-height: 1.75; }
+.review-card2 .rc-stars { color: var(--gold); letter-spacing: .2em; font-size: .85rem; }
+
+/* ===== Pricing 할인 카드 ===== */
+.price-discount { text-align: center; max-width: 540px; margin: 0 auto 14px; }
+.price-discount .hl { color: var(--gold-bright); font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1.15rem; }
+.price-discount .sub { color: var(--bone-soft); font-size: .82rem; letter-spacing: .18em; margin-top: 6px; }
+.tier-grid { display: grid; gap: 14px; max-width: 540px; margin: 22px auto 0; }
+.tier { position: relative; padding: 26px 22px 24px; background: rgba(212,175,106,.04); border: 1px solid var(--gold-pale); }
+.tier.featured { border-color: var(--gold-bright); background: rgba(232,200,120,.08); box-shadow: 0 0 24px rgba(212,175,106,.15); }
+.tier .tier-name { font-family: "Ma Shan Zheng","Noto Serif KR",serif; color: var(--gold-bright); font-size: 1.45rem; letter-spacing: .15em; }
+.tier .tier-name-kr { display: block; font-size: .78rem; color: var(--bone-soft); letter-spacing: .25em; margin-top: 4px; }
+.tier .tier-price { margin: 14px 0 4px; font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 2rem; color: var(--bone); }
+.tier .tier-orig { font-size: .82rem; color: var(--bone-faint); text-decoration: line-through; letter-spacing: .1em; }
+.tier ul { list-style: none; padding: 16px 0 0; margin: 14px 0 0; border-top: 1px solid var(--gold-pale); color: var(--bone-soft); font-size: .93rem; line-height: 2; }
+.tier ul li::before { content: "· "; color: var(--gold); }
+.tier .tier-stamp { position: absolute; top: -12px; right: -10px; transform: rotate(-8deg); }
+.refund-box { max-width: 460px; margin: 22px auto 0; padding: 14px 18px; text-align: center; border: 1px dashed var(--gold-line); color: var(--bone-soft); font-size: .9rem; }
+.refund-box .head { color: var(--gold); letter-spacing: .25em; font-size: .85rem; margin-bottom: 4px; display: block; }
+
+/* ===== Sun Radiant ===== */
+.sun-wrap { position: relative; display: flex; align-items: center; justify-content: center; min-height: 240px; margin: 0 auto 18px; }
+.sun-radiant { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%,-50%); width: 280px; height: 280px; pointer-events: none; opacity: .55; }
+.sun-radiant::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(232,200,120,.55), rgba(232,200,120,0) 60%); filter: blur(8px); }
+.sun-radiant::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    conic-gradient(from 0deg,
+      rgba(232,200,120,0) 0deg, rgba(232,200,120,.5) 5deg, rgba(232,200,120,0) 10deg,
+      rgba(232,200,120,0) 35deg, rgba(232,200,120,.4) 40deg, rgba(232,200,120,0) 45deg,
+      rgba(232,200,120,0) 70deg, rgba(232,200,120,.5) 75deg, rgba(232,200,120,0) 80deg,
+      rgba(232,200,120,0) 105deg, rgba(232,200,120,.4) 110deg, rgba(232,200,120,0) 115deg,
+      rgba(232,200,120,0) 140deg, rgba(232,200,120,.5) 145deg, rgba(232,200,120,0) 150deg,
+      rgba(232,200,120,0) 175deg, rgba(232,200,120,.4) 180deg, rgba(232,200,120,0) 185deg,
+      rgba(232,200,120,0) 210deg, rgba(232,200,120,.5) 215deg, rgba(232,200,120,0) 220deg,
+      rgba(232,200,120,0) 245deg, rgba(232,200,120,.4) 250deg, rgba(232,200,120,0) 255deg,
+      rgba(232,200,120,0) 280deg, rgba(232,200,120,.5) 285deg, rgba(232,200,120,0) 290deg,
+      rgba(232,200,120,0) 315deg, rgba(232,200,120,.4) 320deg, rgba(232,200,120,0) 325deg
+    );
+  mask: radial-gradient(circle, transparent 28%, #000 30%);
+}
+.sun-han { position: relative; z-index: 2; font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 3.4rem; color: var(--gold-bright); letter-spacing: .12em; }
+
+/* ===== Section header — 한자 라벨 ===== */
+.han-label { display: flex; align-items: center; justify-content: center; gap: 14px; color: var(--gold); font-size: .82rem; letter-spacing: .35em; margin-bottom: 14px; }
+.han-label .han { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1.15rem; color: var(--gold-bright); letter-spacing: .15em; }
+.han-label::before, .han-label::after { content: "·"; color: var(--gold); }
+
+/* ===== Sticky CTA 핸드오프 스타일 (텍스트만) ===== */
+.sticky-cta-text { display: flex; flex-direction: column; gap: 1px; line-height: 1.25; text-align: left; }
+.sticky-cta-text .sct-hl { color: var(--gold-bright); font-size: .82rem; font-weight: 700; }
+.sticky-cta-text .sct-sub { color: var(--bone-soft); font-size: .72rem; }
+
+/* ===== KakaoButton 핸드오프 ===== */
+.btn-kakao-full { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 16px 24px; background: var(--kakao); color: var(--kakao-text); font-weight: 800; font-size: 1.02rem; border: 0; border-radius: 12px; transition: filter .15s; }
+.btn-kakao-full:hover { filter: brightness(.97); }
+.btn-kakao-full .ksub { font-weight: 500; color: rgba(25,25,25,.65); font-size: .85rem; margin-left: 6px; }
+
+@media (max-width: 560px) {
+  .saju-board .sb-han { font-size: 1.5rem; }
+  .hero-mark .hanja { font-size: 3.2rem; }
 }
