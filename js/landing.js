@@ -38,7 +38,127 @@ document.addEventListener("DOMContentLoaded", function () {
   initReveal();
   initApplyForm();   // /apply 에서만 동작
   initThanks();      // /thanks 에서만 동작
+  initSceneryFromHandoff();
 });
+
+/* ============================================================
+   Claude Design 핸드오프 SVG (LunarMansionChart, Galaxy, Mountain, Sun Radiant)
+   ============================================================ */
+function initSceneryFromHandoff() {
+  const lunar = document.getElementById("lunar-svg");
+  if (lunar) lunar.innerHTML = buildLunarMansion(280);
+
+  const galaxy = document.getElementById("galaxy-svg");
+  if (galaxy) galaxy.innerHTML = buildGalaxy(260);
+
+  const mtn = document.getElementById("mountain-svg-band");
+  if (mtn) mtn.innerHTML = buildMountain(260, true);
+
+  const sun = document.getElementById("sun-radiant-svg");
+  if (sun) sun.innerHTML = buildSunRadiant(320);
+}
+
+/* 28수 천문도 */
+function buildLunarMansion(size) {
+  const mansions = ["角","亢","氐","房","心","尾","箕","斗","牛","女","虛","危","室","壁","奎","婁","胃","昴","畢","觜","參","井","鬼","柳","星","張","翼","軫"];
+  const guards = [{a:0,h:"青龍",l:"東"},{a:90,h:"玄武",l:"北"},{a:180,h:"白虎",l:"西"},{a:270,h:"朱雀",l:"南"}];
+  const cx=size/2, cy=size/2, rO=size*0.46, rR=size*0.40, rI=size*0.28, rC=size*0.16;
+  const N=mansions.length, step=360/N, st=-90-step/2;
+  let s = `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" style="display:block"><defs>`+
+    `<radialGradient id="lm-bg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1a0810" stop-opacity=".3"/><stop offset="100%" stop-color="#0d0608" stop-opacity=".9"/></radialGradient>`+
+    `<radialGradient id="lm-core" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e8c878" stop-opacity=".8"/><stop offset="100%" stop-color="#d4af6a" stop-opacity="0"/></radialGradient></defs>`;
+  s += `<circle cx="${cx}" cy="${cy}" r="${rO}" fill="url(#lm-bg)"/>`+
+    `<circle cx="${cx}" cy="${cy}" r="${rO}" fill="none" stroke="rgba(212,175,106,.6)" stroke-width=".8"/>`+
+    `<circle cx="${cx}" cy="${cy}" r="${rR}" fill="none" stroke="rgba(212,175,106,.35)" stroke-width=".6"/>`+
+    `<circle cx="${cx}" cy="${cy}" r="${rI}" fill="none" stroke="rgba(212,175,106,.4)" stroke-width=".6"/>`+
+    `<circle cx="${cx}" cy="${cy}" r="${rC}" fill="none" stroke="rgba(212,175,106,.6)" stroke-width=".8"/>`;
+  [0,7,14,21].forEach(function(i){ const a=(st+i*step)*Math.PI/180;
+    s += `<line x1="${cx+Math.cos(a)*rC}" y1="${cy+Math.sin(a)*rC}" x2="${cx+Math.cos(a)*rO}" y2="${cy+Math.sin(a)*rO}" stroke="rgba(212,175,106,.55)" stroke-width=".8"/>`;
+  });
+  mansions.forEach(function(h,i){ const a=(st+(i+0.5)*step)*Math.PI/180; const r=(rR+rO)/2;
+    const x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+    s += `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng','Nanum Myeongjo',serif" font-size="${size*0.045}" fill="rgba(240,230,210,.85)">${h}</text>`;
+  });
+  guards.forEach(function(g){ const a=(g.a-90)*Math.PI/180; const r=(rC+rI)/2;
+    const x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+    s += `<text x="${x}" y="${y-4}" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="${size*0.052}" fill="#d4af6a">${g.h}</text>`+
+         `<text x="${x}" y="${y+12}" text-anchor="middle" dominant-baseline="central" font-family="'Nanum Myeongjo',serif" font-size="${size*0.028}" letter-spacing=".15em" fill="rgba(212,175,106,.6)">${g.l}</text>`;
+  });
+  s += `<circle cx="${cx}" cy="${cy}" r="${rC-4}" fill="url(#lm-core)"/>`+
+       `<text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="central" font-family="'Ma Shan Zheng',serif" font-size="${size*0.10}" fill="#0d0608">太</text>`;
+  for (let i=0;i<56;i++){ const a=(i*(360/56)-90)*Math.PI/180;
+    const x1=cx+Math.cos(a)*(rO+2), y1=cy+Math.sin(a)*(rO+2);
+    const x2=cx+Math.cos(a)*(rO+(i%7===0?7:4)), y2=cy+Math.sin(a)*(rO+(i%7===0?7:4));
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="rgba(212,175,106,.45)" stroke-width="${i%7===0?0.9:0.5}"/>`;
+  }
+  s += `</svg>`;
+  return s;
+}
+
+/* Galaxy */
+function buildGalaxy(size) {
+  let s = `<svg viewBox="0 0 400 400" width="${size}" height="${size}" style="display:block"><defs>`+
+    `<radialGradient id="gxy-core" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0e6d2" stop-opacity="1"/><stop offset="15%" stop-color="#e8c878" stop-opacity=".85"/><stop offset="40%" stop-color="#d4af6a" stop-opacity=".4"/><stop offset="100%" stop-color="#d4af6a" stop-opacity="0"/></radialGradient>`+
+    `<radialGradient id="gxy-halo" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5a1822" stop-opacity="0"/><stop offset="50%" stop-color="#5a1822" stop-opacity=".35"/><stop offset="100%" stop-color="#0d0608" stop-opacity="0"/></radialGradient></defs>`+
+    `<circle cx="200" cy="200" r="180" fill="url(#gxy-halo)"/>`;
+  s += `<g fill="none" stroke="#d4af6a" stroke-width="1.2" stroke-linecap="round">`;
+  for (let i=0;i<5;i++){ const rot=i*72;
+    s += `<path d="M 200 200 Q 260 150 280 200 Q 290 270 220 290 Q 150 290 130 230 Q 120 180 180 165" transform="rotate(${rot} 200 200)" opacity="${0.18+0.06*(i%3)}"/>`;
+  }
+  s += `</g><g fill="#d4af6a">`;
+  for (let i=0;i<60;i++){ const a=i*0.32, r=30+i*2.6;
+    const x=200+Math.cos(a)*r, y=200+Math.sin(a)*r;
+    const op=Math.max(0.1,0.9-i*0.013), rad=0.4+(i%5===0?0.5:0);
+    s += `<circle cx="${x}" cy="${y}" r="${rad}" opacity="${op}"/>`;
+  }
+  for (let i=0;i<60;i++){ const a=Math.PI+i*0.32, r=30+i*2.6;
+    const x=200+Math.cos(a)*r, y=200+Math.sin(a)*r;
+    const op=Math.max(0.1,0.9-i*0.013), rad=0.4+(i%5===0?0.5:0);
+    s += `<circle cx="${x}" cy="${y}" r="${rad}" opacity="${op}" fill="#f0e6d2"/>`;
+  }
+  s += `</g><circle cx="200" cy="200" r="50" fill="url(#gxy-core)"/><circle cx="200" cy="200" r="6" fill="#f0e6d2"/></svg>`;
+  return s;
+}
+
+/* Mountain scene with optional lantern */
+function buildMountain(height, withLantern) {
+  let s = `<svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMax slice" width="100%" height="${height}" style="display:block"><defs>`+
+    `<linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0810" stop-opacity="0"/><stop offset="80%" stop-color="#1a0810" stop-opacity=".65"/><stop offset="100%" stop-color="#0d0608" stop-opacity=".95"/></linearGradient>`+
+    `<linearGradient id="mt-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a0a14"/><stop offset="100%" stop-color="#1a0810"/></linearGradient>`+
+    `<linearGradient id="mt-mid" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a0810"/><stop offset="100%" stop-color="#0d0608"/></linearGradient>`+
+    `<linearGradient id="mt-near" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0d0608"/><stop offset="100%" stop-color="#050204"/></linearGradient>`+
+    `<radialGradient id="moon-g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0e6d2" stop-opacity=".7"/><stop offset="50%" stop-color="#d4af6a" stop-opacity=".18"/><stop offset="100%" stop-color="#d4af6a" stop-opacity="0"/></radialGradient>`+
+    `<radialGradient id="lantern-g" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ffd066" stop-opacity=".95"/><stop offset="30%" stop-color="#e8a040" stop-opacity=".6"/><stop offset="100%" stop-color="#a04a18" stop-opacity="0"/></radialGradient></defs>`+
+    `<rect width="400" height="240" fill="url(#sky-grad)"/>`+
+    `<circle cx="310" cy="60" r="42" fill="url(#moon-g)"/><circle cx="310" cy="60" r="14" fill="#f0e6d2" opacity=".18"/>`+
+    `<path d="M0 160 L40 130 L80 145 L120 110 L160 130 L200 100 L240 120 L290 90 L340 115 L400 100 L400 240 L0 240 Z" fill="url(#mt-far)" opacity=".7"/>`+
+    `<rect x="0" y="120" width="400" height="60" fill="#1a0810" opacity=".45"/>`+
+    `<path d="M-20 180 L30 150 L70 170 L120 140 L170 160 L220 130 L280 155 L340 135 L400 160 L400 240 L-20 240 Z" fill="url(#mt-mid)" opacity=".85"/>`+
+    `<path d="M-10 210 L40 185 L90 205 L140 175 L200 200 L260 180 L320 200 L400 185 L400 240 L-10 240 Z" fill="url(#mt-near)"/>`;
+  if (withLantern) {
+    s += `<g><circle cx="200" cy="218" r="38" fill="url(#lantern-g)"/><circle cx="200" cy="218" r="4" fill="#ffd066"/></g>`;
+  }
+  s += `<g opacity=".4">`;
+  for (let i=0;i<18;i++){ const x=(i*23+11)%400, y=130+((i*7)%70);
+    s += `<circle cx="${x}" cy="${y}" r=".6" fill="#d4af6a"/>`;
+  }
+  s += `</g></svg>`;
+  return s;
+}
+
+/* Sun Radiant (36 rays + glowing core) */
+function buildSunRadiant(size) {
+  let s = `<svg viewBox="0 0 400 400" width="${size}" height="${size}" style="display:block"><defs>`+
+    `<radialGradient id="sun-core" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#f0e6d2" stop-opacity=".95"/><stop offset="20%" stop-color="#e8c878" stop-opacity=".7"/><stop offset="55%" stop-color="#d4af6a" stop-opacity=".25"/><stop offset="100%" stop-color="#d4af6a" stop-opacity="0"/></radialGradient></defs>`+
+    `<g stroke="#d4af6a" stroke-opacity=".4" stroke-width=".6">`;
+  for (let i=0;i<36;i++){ const a=(i*10)*Math.PI/180, r1=50, r2=180;
+    const x1=200+Math.cos(a)*r1, y1=200+Math.sin(a)*r1;
+    const x2=200+Math.cos(a)*r2, y2=200+Math.sin(a)*r2;
+    s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" opacity="${i%2?0.5:1}"/>`;
+  }
+  s += `</g><circle cx="200" cy="200" r="70" fill="url(#sun-core)"/><circle cx="200" cy="200" r="20" fill="#f0e6d2" opacity=".6"/></svg>`;
+  return s;
+}
 
 /* ---------- 배경 이미지 자동 적용 (없으면 그라데이션 유지) ---------- */
 function initImages() {

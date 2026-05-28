@@ -76,7 +76,20 @@
     </div>
   </section>
 
-  <!-- ===================== 03 자동 사주 도발 ===================== -->
+  <!-- ===================== 03 COSMOS 八字 인트로 (Galaxy SVG) ===================== -->
+  <section class="section bg-ink" style="background-color:var(--wine);text-align:center;">
+    <div class="wrap">
+      <p class="han-label"><span class="han">二</span><span>生 · 八字</span></p>
+      <div class="galaxy-wrap" id="galaxy-svg" aria-hidden="true"></div>
+      <h2 class="sec-title" style="font-family:'Noto Serif KR',serif;">
+        당신이 태어난 그 순간,<br /><span class="glow-gold" style="color:var(--gold-bright);">하늘과 땅</span>이<br />여덟 글자를 새겼습니다.
+      </h2>
+      <p class="brush glow-gold" style="font-size:clamp(3rem,10vw,4rem);color:var(--gold-bright);margin:30px 0 14px;letter-spacing:.15em;">八字</p>
+      <p style="color:var(--bone-soft);font-size:.92rem;letter-spacing:.2em;">年 · 月 · 日 · 時 / 天干 4 + 地支 4</p>
+    </div>
+  </section>
+
+  <!-- ===================== 04 자동 사주 도발 ===================== -->
   <section class="section bg-ink">
     <div class="wrap center">
       <p class="han-label"><span class="han">二</span><span>惑 · 자동 사주의 한계</span></p>
@@ -92,7 +105,41 @@
     </div>
   </section>
 
-  <!-- ===================== 04 CONCEPT 八字 ===================== -->
+  <!-- ===================== 05 PROBLEM 4가지 고민 (Mountain SVG) ===================== -->
+  <section class="bg-ink" style="position:relative;overflow:hidden;background-color:var(--wine);">
+    <div class="mountain-band" id="mountain-svg-band" aria-hidden="true"></div>
+    <div class="wrap" style="padding:24px 22px 70px;text-align:center;position:relative;z-index:1;margin-top:-40px;">
+      <p class="han-label"><span class="han">四</span><span>惑 · 혹시 이런 마음</span></p>
+      <h2 class="sec-title" style="font-family:'Noto Serif KR',serif;color:var(--bone);">
+        혹시,<br />이런 마음에<br /><span class="glow-gold" style="color:var(--gold-bright);">막혀 계신가요.</span>
+      </h2>
+      <hr class="rule" />
+      <div class="problem-cards reveal">
+        <div class="problem-card">
+          <div class="pc-han-box"><span class="brush glow-gold">業</span></div>
+          <div><div class="pc-label">진 로</div><div class="pc-text">지금 일을 계속해야 할지 한 해째 갈피가 잡히지 않으세요?</div></div>
+        </div>
+        <div class="problem-card">
+          <div class="pc-han-box"><span class="brush glow-gold">緣</span></div>
+          <div><div class="pc-label">인 연</div><div class="pc-text">맞지 않는 사람만 자꾸 만난다 느끼시나요?</div></div>
+        </div>
+        <div class="problem-card">
+          <div class="pc-han-box"><span class="brush glow-gold">財</span></div>
+          <div><div class="pc-label">재 물</div><div class="pc-text">돈은 들어오는데 머물지 않고 흩어지나요?</div></div>
+        </div>
+        <div class="problem-card">
+          <div class="pc-han-box"><span class="brush glow-gold">時</span></div>
+          <div><div class="pc-label">시 기</div><div class="pc-text">지금이 움직일 때인지, 기다릴 때인지 모르시겠나요?</div></div>
+        </div>
+      </div>
+      <p class="ornament"><span class="gold-diamond"></span></p>
+      <p style="font-family:'Noto Serif KR',serif;font-size:1.02rem;color:var(--bone);line-height:1.9;letter-spacing:.04em;">
+        답이 보이지 않을 때<br /><strong class="glow-gold" style="color:var(--gold-bright);">먼저 길을 본 사람</strong>의<br />말을 들어야 합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== 06 CONCEPT 八字 ===================== -->
   <section class="section bg-ink" style="background-color:var(--wine);">
     <div class="wrap center">
       <p class="han-label"><span class="han">三</span><span>命 · 여덟 글자</span></p>
@@ -137,7 +184,55 @@
     </div>
   </section>
 
-  <!-- ===================== 06 기본 기록 구성 (목차) ===================== -->
+  <!-- ===================== 08 PRECISION 정밀 산출 (28수 + 산출4종 + stats + Pipeline) ===================== -->
+  <section class="section bg-ink" style="text-align:center;">
+    <div class="wrap">
+      <p class="han-label"><span class="han">五</span><span>精 · 정밀한 산출</span></p>
+      <h2 class="sec-title" style="font-family:'Noto Serif KR',serif;">
+        전통의 학문을<br /><span class="glow-gold" style="color:var(--gold-bright);">과학적 정밀함</span>으로<br />풀어냅니다.
+      </h2>
+      <p style="margin-top:14px;font-size:.8rem;color:var(--bone-faint);letter-spacing:.2em;">東洋 天文 × 現代 알고리즘</p>
+
+      <div style="margin:36px 0 18px;display:flex;justify-content:center;" id="lunar-svg" aria-hidden="true"></div>
+      <p style="font-size:.78rem;color:var(--gold-soft);letter-spacing:.3em;margin-bottom:6px;">· 二 十 八 宿 ·</p>
+      <p style="font-size:.82rem;color:var(--bone-faint);line-height:1.75;max-width:420px;margin:0 auto;">하늘을 28구역으로 나눈 동양 천문도.<br />명운록의 모든 산출은 이 천문 좌표 위에서 시작합니다.</p>
+      <hr class="rule" />
+
+      <p style="font-size:.82rem;color:var(--gold-bright);letter-spacing:.3em;margin-bottom:18px;font-weight:600;">· 산 출 방 법 ·</p>
+      <div class="methods-cards reveal">
+        <div class="mc"><div class="mc-han"><span class="brush glow-gold">曆</span></div><div><div class="mc-label">만세력 정밀계산</div><div class="mc-desc">1900–2100년 만세력 분단위로 산출</div></div></div>
+        <div class="mc"><div class="mc-han"><span class="brush glow-gold">時</span></div><div><div class="mc-label">진태양시 자동 보정</div><div class="mc-desc">출생 도시의 경도 차이를 분 단위로 환산</div></div></div>
+        <div class="mc"><div class="mc-han"><span class="brush glow-gold">節</span></div><div><div class="mc-label">절기 입절시각 적용</div><div class="mc-desc">입춘·경칩 등 절입 시각까지 정밀 반영</div></div></div>
+        <div class="mc"><div class="mc-han"><span class="brush glow-gold">子</span></div><div><div class="mc-label">子時 경계 일주 처리</div><div class="mc-desc">23시 이후 출생 시 일주 자동 보정</div></div></div>
+      </div>
+      <hr class="rule" />
+
+      <p style="font-size:.82rem;color:var(--gold-bright);letter-spacing:.3em;margin-bottom:18px;font-weight:600;">· 검 증 된 정 밀 도 ·</p>
+      <div class="stats-grid-4 reveal">
+        <div class="stat-c"><div class="sn-row"><span class="sn-num glow-gold">99.7</span><span class="sn-unit">%</span></div><div class="sn-label">명식 산출 정확도</div><div class="sn-sub">11,300건 검증</div></div>
+        <div class="stat-c"><div class="sn-row"><span class="sn-num glow-gold">87.2</span><span class="sn-unit">%</span></div><div class="sn-label">일주 본질 적중률</div><div class="sn-sub">자체 추적 데이터</div></div>
+        <div class="stat-c"><div class="sn-row"><span class="sn-num glow-gold">11,300</span><span class="sn-unit">+</span></div><div class="sn-label">검증 케이스</div><div class="sn-sub">6년 누적</div></div>
+        <div class="stat-c"><div class="sn-row"><span class="sn-num glow-gold">1,000</span><span class="sn-unit">+년</span></div><div class="sn-label">학문의 두께</div><div class="sn-sub">子平命理 정립 이래</div></div>
+      </div>
+
+      <div class="pipeline-box reveal">
+        <div class="pb-head">· PIPELINE · 산출 흐름 ·</div>
+        <div class="pipeline-row">
+          <div class="ps"><div class="ps-h"><span>生</span></div><div class="ps-label">입력</div><div class="ps-sub">생년월일시</div></div>
+          <div class="ps-arrow">›</div>
+          <div class="ps"><div class="ps-h"><span>曆</span></div><div class="ps-label">만세력</div><div class="ps-sub">천간지지<br />변환</div></div>
+          <div class="ps-arrow">›</div>
+          <div class="ps"><div class="ps-h"><span>時</span></div><div class="ps-label">시 보정</div><div class="ps-sub">진태양시<br />·절기</div></div>
+          <div class="ps-arrow">›</div>
+          <div class="ps"><div class="ps-h"><span>式</span></div><div class="ps-label">명식</div><div class="ps-sub">8자 산출</div></div>
+          <div class="ps-arrow">›</div>
+          <div class="ps"><div class="ps-h"><span>解</span></div><div class="ps-label">풀이</div><div class="ps-sub">老師 1:1</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 09 기본 기록 구성 (목차) ===================== -->
   <section class="section bg-ink" id="record" style="background-color:var(--wine);">
     <div class="wrap center">
       <p class="han-label"><span class="han">五</span><span>記 · 기본 기록 목차</span></p>
@@ -372,7 +467,7 @@
   <section class="section bg-ink final-cta" style="text-align:center;">
     <div class="wrap inner">
       <div class="sun-wrap">
-        <div class="sun-radiant" aria-hidden="true"></div>
+        <div style="position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);opacity:.55;pointer-events:none;" id="sun-radiant-svg" aria-hidden="true"></div>
         <span class="sun-han brush glow-gold">問命</span>
       </div>
       <p class="mono" style="color:var(--gold-soft);letter-spacing:.35em;font-size:.78rem;margin:0 0 12px;">· 명을 묻다 ·</p>

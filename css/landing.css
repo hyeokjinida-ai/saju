@@ -1116,3 +1116,57 @@ body { background: var(--cream-lt); color: var(--ink); }
   .saju-board .sb-han { font-size: 1.5rem; }
   .hero-mark .hanja { font-size: 3.2rem; }
 }
+
+/* ============================================================
+   Problem 4카드 + Precision (28수+산출+stats+Pipeline) + Cosmos
+   ============================================================ */
+/* Mountain band (Problem 상단 풀블리드) */
+.mountain-band { position: relative; height: 260px; overflow: hidden; }
+.mountain-band > svg { width: 100%; height: 100%; display: block; }
+.mountain-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(58,13,24,.5) 0%, transparent 40%, var(--wine) 100%); pointer-events: none; }
+
+/* Problem cards */
+.problem-cards { display: flex; flex-direction: column; gap: 12px; max-width: 540px; margin: 22px auto 0; text-align: left; }
+.problem-card { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; background: rgba(13,6,8,.45); border: 1px solid var(--gold-pale); padding: 14px; }
+.pc-han-box { width: 48px; height: 48px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; }
+.pc-han-box span { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1.6rem; color: var(--gold-bright); line-height: 1; }
+.pc-label { font-size: .68rem; color: var(--gold); letter-spacing: .3em; margin-bottom: 4px; }
+.pc-text { font-size: .92rem; color: var(--bone-soft); line-height: 1.65; }
+
+/* Cosmos galaxy wrap */
+.galaxy-wrap { display: flex; justify-content: center; margin: 30px 0; }
+.galaxy-wrap svg { display: block; }
+
+/* Precision: methods 4-card */
+.methods-cards { display: flex; flex-direction: column; gap: 10px; max-width: 540px; margin: 0 auto; text-align: left; }
+.methods-cards .mc { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; background: rgba(13,6,8,.5); border: 1px solid var(--gold-pale); padding: 14px; }
+.methods-cards .mc-han { width: 44px; height: 44px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; }
+.methods-cards .mc-han span { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1.45rem; color: var(--gold-bright); line-height: 1; }
+.methods-cards .mc-label { font-size: .85rem; color: var(--bone); font-weight: 700; letter-spacing: .06em; margin-bottom: 3px; }
+.methods-cards .mc-desc { font-size: .78rem; color: var(--bone-soft); line-height: 1.6; }
+
+/* Precision: stats 2x2 */
+.stats-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 540px; margin: 0 auto; }
+.stat-c { border: 1px solid var(--gold-pale); background: rgba(13,6,8,.55); padding: 18px 10px; text-align: center; }
+.stat-c .sn-row { display: flex; align-items: baseline; justify-content: center; gap: 2px; }
+.stat-c .sn-num { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1.9rem; color: var(--gold-bright); line-height: 1; }
+.stat-c .sn-unit { font-size: .85rem; color: var(--gold); font-weight: 600; }
+.stat-c .sn-label { font-size: .78rem; color: var(--bone); font-weight: 600; margin-top: 8px; }
+.stat-c .sn-sub { font-size: .6rem; color: var(--bone-faint); letter-spacing: .15em; margin-top: 4px; }
+
+/* Precision: pipeline */
+.pipeline-box { margin: 24px auto 0; padding: 18px 14px; border: 1px dashed var(--gold-line); background: rgba(13,6,8,.4); max-width: 540px; }
+.pipeline-box .pb-head { font-family: "JetBrains Mono", monospace; font-size: .72rem; color: var(--gold); letter-spacing: .3em; margin-bottom: 14px; text-align: center; }
+.pipeline-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 2px; }
+.pipeline-row .ps { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.pipeline-row .ps-h { width: 30px; height: 30px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; background: rgba(212,175,106,.08); }
+.pipeline-row .ps-h span { font-family: "Ma Shan Zheng","Noto Serif KR",serif; font-size: 1rem; color: var(--gold-bright); line-height: 1; }
+.pipeline-row .ps-label { font-size: .68rem; color: var(--bone); font-weight: 600; letter-spacing: .08em; }
+.pipeline-row .ps-sub { font-size: .58rem; color: var(--bone-faint); text-align: center; line-height: 1.3; }
+.pipeline-row .ps-arrow { color: var(--gold); margin-top: 8px; font-size: .8rem; opacity: .7; flex-shrink: 0; }
+
+@media (max-width: 480px) {
+  .stat-c .sn-num { font-size: 1.55rem; }
+  .pipeline-row .ps-h { width: 26px; height: 26px; }
+  .pipeline-row .ps-h span { font-size: .85rem; }
+}
