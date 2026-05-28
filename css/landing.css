@@ -446,8 +446,8 @@ body { background: var(--cream-lt); color: var(--ink); }
 /* 다크 섹션 안에서만 컴포넌트 라이트화 (라이트 섹션은 기본 어두운 글자 유지) */
 .bg-ink .pull, .bg-navy .pull { color: var(--cream); }
 .bg-ink .pull b, .bg-navy .pull b { color: var(--gold-soft); }
-.bg-ink .statement p, .bg-navy .statement p { color: var(--bone); }
-.bg-ink .statement p:last-child, .bg-navy .statement p:last-child { color: var(--bone-soft); }
+.bg-ink .statement p, .bg-navy .statement p { color: var(--bone-soft); }
+.bg-ink .statement p:last-child, .bg-navy .statement p:last-child { color: var(--bone); }
 .bg-ink .tl-step h3, .bg-navy .tl-step h3 { color: var(--cream); }
 .bg-ink .tl-step p, .bg-navy .tl-step p { color: rgba(246,239,227,.72); }
 .bg-ink .compare-table, .bg-navy .compare-table { border-top-color: rgba(200,180,140,.22); }
