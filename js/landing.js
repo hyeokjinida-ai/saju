@@ -17,7 +17,7 @@ const CONFIG = {
 
   // ▼ 상품명 / 가격 (바꾸면 신청·요약에 반영)
   products: {
-    basic:   { name: "명운록 簡命 (간명)",   price: 19900, original: 29900 },
+    basic:   { name: "명운록 簡命 (간명)",   price: 9900, original: 19900 },
     premium: { name: "명운록 深命 (심명)",   price: 49900, original: 79900 },
     // 추후 확장 상품 (현재 랜딩에는 노출하지 않음)
     comprehensive: { name: "명운록 종합 기록", price: 79900 }
