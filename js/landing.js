@@ -18,7 +18,8 @@ const CONFIG = {
   // ▼ 신청 데이터가 저장될 구글 시트(Apps Script) 웹앱 URL
   SHEET_URL: "https://script.google.com/macros/s/AKfycbypZgEkck6w_SxNWg64OuwLhLlwYCw-0B_M8V-pgV1IsAW6YXoth7Z2sXS81sTzQMrHpA/exec",
 
-  // ▼ 상품명 / 가격 (바꾸면 신청·요약에 반영)
+  // ▼ 상품명 (가격은 사이트에 노출하지 않고 카카오톡에서 안내)
+  //   price 값은 내부 참고용 — 화면에는 표시되지 않음
   products: {
     basic:   { name: "명운록 簡命 (간명)",   price: 9900, original: 19900 },
     premium: { name: "명운록 深命 (심명)",   price: 39900, original: 79900, upgradeFromBasic: 30000 },
