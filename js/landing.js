@@ -15,6 +15,9 @@ const CONFIG = {
   //   채널 예)     https://pf.kakao.com/_YOUR_CHANNEL_ID/chat
   KAKAO_CHAT_URL: "https://open.kakao.com/o/sgEYBxwi",
 
+  // ▼ 신청 데이터가 저장될 구글 시트(Apps Script) 웹앱 URL
+  SHEET_URL: "https://script.google.com/macros/s/AKfycbypZgEkck6w_SxNWg64OuwLhLlwYCw-0B_M8V-pgV1IsAW6YXoth7Z2sXS81sTzQMrHpA/exec",
+
   // ▼ 상품명 / 가격 (바꾸면 신청·요약에 반영)
   products: {
     basic:   { name: "명운록 簡命 (간명)",   price: 9900, original: 19900 },
@@ -254,15 +257,25 @@ function initApplyForm() {
    나중에 Supabase / Google Sheet / Airtable 등에 저장하려면
    아래 fetch 부분의 주석을 풀고 엔드포인트만 넣으면 됩니다.        */
 function submitApplication(data) {
+  // 0) 메타 픽셀 전환 이벤트 — 신청 제출 = Lead
+  try { if (window.fbq) fbq('track', 'Lead', { content_name: data.product || '' }); } catch (e) {}
+
   // 1) 로컬 저장 (완료 페이지 요약용)
   try { localStorage.setItem(CONFIG.storeKey, JSON.stringify(data)); } catch (e) {}
 
-  // 2) (선택) 백엔드 저장 — 나중에 여기만 채우면 됩니다.
-  // return fetch("https://YOUR_ENDPOINT", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data)
-  // }).then(function () { return true; }).catch(function () { return true; });
+  // 2) 구글 시트로 전송 (Apps Script 웹앱)
+  //    no-cors + text/plain 으로 보내 CORS/프리플라이트 회피.
+  //    전송 성공 여부와 무관하게 항상 다음 단계로 진행(고객 경험 우선).
+  if (CONFIG.SHEET_URL && CONFIG.SHEET_URL.indexOf("script.google.com") !== -1) {
+    try {
+      fetch(CONFIG.SHEET_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(data)
+      }).catch(function () {});
+    } catch (e) {}
+  }
 
   return Promise.resolve(true);
 }
@@ -280,6 +293,10 @@ function initThanks() {
     kakaoBtn.setAttribute("target", "_blank");
     kakaoBtn.setAttribute("rel", "noopener");
   }
+  // 메타 픽셀 전환 이벤트 — 카톡 연결 클릭 = Contact
+  kakaoBtn.addEventListener("click", function () {
+    try { if (window.fbq) fbq('track', 'Contact'); } catch (e) {}
+  });
 
   // 입력 요약 표시
   let data = null;
