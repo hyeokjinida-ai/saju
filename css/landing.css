@@ -917,6 +917,8 @@ body { background: var(--cream-lt); color: var(--ink); }
 .step-q { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); margin-bottom: 20px; line-height: 1.5; word-break: keep-all; }
 .step-nav { display: flex; gap: 10px; align-items: center; margin-top: 24px; }
 .step-nav .btn-ghost { flex: 0 0 auto; color: var(--ink-soft); border-color: var(--line); }
+/* hidden 속성이 .btn-block 등의 display 규칙에 덮이지 않도록 */
+.btn[hidden], [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .step-panel { animation: none; } }
 
 /* ============================================================
