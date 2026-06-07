@@ -257,8 +257,8 @@ function initApplyForm() {
    나중에 Supabase / Google Sheet / Airtable 등에 저장하려면
    아래 fetch 부분의 주석을 풀고 엔드포인트만 넣으면 됩니다.        */
 function submitApplication(data) {
-  // 0) 메타 픽셀 전환 이벤트 — 신청 제출 = Lead
-  try { if (window.fbq) fbq('track', 'Lead', { content_name: data.product || '' }); } catch (e) {}
+  // 0) 메타 픽셀 전환 이벤트 — 신청 제출 = CompleteRegistration(등록 완료)
+  try { if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: data.product || '' }); } catch (e) {}
 
   // 1) 로컬 저장 (완료 페이지 요약용)
   try { localStorage.setItem(CONFIG.storeKey, JSON.stringify(data)); } catch (e) {}
