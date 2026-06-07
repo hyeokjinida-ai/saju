@@ -205,47 +205,101 @@ function initApplyForm() {
     err.textContent = msg;
     err.classList.add("show");
     if (focusEl) focusEl.focus();
-    err.scrollIntoView({ behavior: "smooth", block: "center" });
   }
   function clearError() { err.classList.remove("show"); err.textContent = ""; }
 
+  // ---- 단계형 위저드 ----
+  const panels = Array.from(form.querySelectorAll(".step-panel"));
+  const total = panels.length;
+  const countEl = document.getElementById("stepCount");
+  const prevBtn = document.getElementById("stepPrev");
+  const nextBtn = document.getElementById("stepNext");
+  const submitBtn = document.getElementById("stepSubmit");
+  let cur = 0;
+
+  // 각 단계 필수값 검증 (해당 단계에서 "다음" 누를 때)
+  function validateStep(i) {
+    const step = i + 1;
+    if (step === 2 && !form.querySelector("#ap-name").value.trim())
+      return "이름을 입력해 주세요.";
+    if (step === 3 && !(form.querySelector('input[name="gender"]:checked')))
+      return "성별을 선택해 주세요.";
+    if (step === 4 && !form.querySelector("#ap-birth").value)
+      return "생년월일을 입력해 주세요.";
+    if (step === 5 && !(form.querySelector('input[name="cal"]:checked')))
+      return "양력 / 음력을 선택해 주세요.";
+    return null;
+  }
+
+  function render() {
+    panels.forEach(function (p, i) { p.hidden = (i !== cur); });
+    if (countEl) countEl.textContent = (cur + 1) + " / " + total;
+    prevBtn.hidden = (cur === 0);
+    const last = (cur === total - 1);
+    nextBtn.hidden = last;
+    submitBtn.hidden = !last;
+    // 현재 패널 첫 입력에 포커스
+    const firstInput = panels[cur].querySelector("input[type=text], input[type=date], select, textarea");
+    if (firstInput) { try { firstInput.focus({ preventScroll: true }); } catch (e) {} }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  nextBtn.addEventListener("click", function () {
+    clearError();
+    const msg = validateStep(cur);
+    if (msg) return showError(msg);
+    if (cur < total - 1) { cur++; render(); }
+  });
+  prevBtn.addEventListener("click", function () {
+    clearError();
+    if (cur > 0) { cur--; render(); }
+  });
+
+  // 라디오 선택 시 자동으로 다음 단계로 (성별·양음력처럼 선택형)
+  ["gender", "cal"].forEach(function (nm) {
+    form.querySelectorAll('input[name="' + nm + '"]').forEach(function (r) {
+      r.addEventListener("change", function () {
+        clearError();
+        setTimeout(function () { if (cur < total - 1) { cur++; render(); } }, 200);
+      });
+    });
+  });
+  // Enter 키로 다음 (textarea 제외)
+  form.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && e.target.tagName !== "TEXTAREA") {
+      e.preventDefault();
+      if (!submitBtn.hidden) { form.requestSubmit ? form.requestSubmit() : nextBtn.click(); }
+      else nextBtn.click();
+    }
+  });
+
+  render();
+
+  // ---- 최종 제출 ----
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     clearError();
 
-    const name = form.querySelector("#ap-name").value.trim();
-    const gender = (form.querySelector('input[name="gender"]:checked') || {}).value || "";
-    const birth = form.querySelector("#ap-birth").value;
-    const cal = (form.querySelector('input[name="cal"]:checked') || {}).value || "";
-
-    // 필수값 검증
-    if (!name)   return showError("이름을 입력해 주세요.", form.querySelector("#ap-name"));
-    if (!gender) return showError("성별을 선택해 주세요.");
-    if (!birth)  return showError("생년월일을 입력해 주세요.", form.querySelector("#ap-birth"));
-    if (!cal)    return showError("양력 / 음력을 선택해 주세요.");
-
-    const product = (form.querySelector('input[name="product"]:checked') || {}).value || CONFIG.products.basic.name;
-    const timeKnow = form.querySelector("#ap-time-know").value;
-    const time = form.querySelector("#ap-time").value.trim();
-    const topics = Array.from(form.querySelectorAll('input[name="topics"]:checked')).map(function (c) { return c.value; });
-    const worry = form.querySelector("#ap-worry").value.trim();
-    const contact = form.querySelector("#ap-contact").value.trim();
+    // 안전: 모든 필수 단계 재검증
+    for (var i = 0; i < total; i++) {
+      var m = validateStep(i);
+      if (m) { cur = i; render(); return showError(m); }
+    }
 
     const data = {
-      product: product,
-      name: name,
-      gender: gender,
-      birth: birth,
-      cal: cal,
-      timeKnow: timeKnow,
-      time: time,
-      topics: topics,
-      worry: worry,
-      contact: contact,
+      product: (form.querySelector('input[name="product"]:checked') || {}).value || CONFIG.products.basic.name,
+      name: form.querySelector("#ap-name").value.trim(),
+      gender: (form.querySelector('input[name="gender"]:checked') || {}).value || "",
+      birth: form.querySelector("#ap-birth").value,
+      cal: (form.querySelector('input[name="cal"]:checked') || {}).value || "",
+      timeKnow: form.querySelector("#ap-time-know").value,
+      time: form.querySelector("#ap-time").value.trim(),
+      topics: Array.from(form.querySelectorAll('input[name="topics"]:checked')).map(function (c) { return c.value; }),
+      worry: form.querySelector("#ap-worry").value.trim(),
+      contact: form.querySelector("#ap-contact").value.trim(),
       createdAt: new Date().toISOString()
     };
 
-    // 제출 처리 (백엔드 연결은 submitApplication 안에서)
     submitApplication(data).then(function () {
       window.location.href = "/thanks";
     });

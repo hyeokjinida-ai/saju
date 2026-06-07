@@ -43,15 +43,15 @@
     <div class="wrap">
       <div class="form-card">
         <div class="form-head">
-          <h1>명운록 기본 사주 기록 신청</h1>
-          <p>정확한 원국 기록을 위해 아래 정보를 입력해주세요.<br />입력 후 카카오톡으로 연결되어 결제 및 전달 방식을 안내받으실 수 있습니다.</p>
+          <h1>명운록 사주 기록 신청</h1>
+          <p id="stepCount" class="step-count">1 / 8</p>
         </div>
 
         <form id="applyForm" novalidate>
-          <!-- 상품 선택 -->
-          <fieldset class="field" style="border:0;padding:0;margin:0 0 22px;">
-            <legend class="lbl" style="padding:0;">기록 선택 <span class="req">*</span></legend>
-            <div class="plan-select">
+          <!-- STEP 1 · 상품 -->
+          <div class="step-panel" data-step="1">
+            <div class="step-q">어떤 기록을 받아보시겠어요?</div>
+            <div class="plan-select" style="grid-template-columns:1fr;gap:12px;">
               <label class="plan-opt">
                 <input type="radio" name="product" value="명운록 簡命 (₩9,900 · 정가 ₩19,900)" checked />
                 <span class="po-name">簡命 · 간명</span>
@@ -65,56 +65,57 @@
                 <span class="po-tag">대운 60년 포함</span>
               </label>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- 이름 -->
-          <div class="field">
-            <label class="lbl" for="ap-name">이름 <span class="req">*</span></label>
+          <!-- STEP 2 · 이름 -->
+          <div class="step-panel" data-step="2" hidden>
+            <div class="step-q">이름을 알려주세요.</div>
             <input type="text" id="ap-name" name="name" autocomplete="name" placeholder="예) 홍길동" />
           </div>
 
-          <!-- 성별 -->
-          <fieldset class="field" style="border:0;padding:0;margin:0 0 22px;">
-            <legend class="lbl" style="padding:0;">성별 <span class="req">*</span></legend>
+          <!-- STEP 3 · 성별 -->
+          <div class="step-panel" data-step="3" hidden>
+            <div class="step-q">성별을 선택해주세요.</div>
             <div class="opt-row">
               <label><input type="radio" name="gender" value="여성" />여성</label>
               <label><input type="radio" name="gender" value="남성" />남성</label>
               <label><input type="radio" name="gender" value="선택 안 함" />선택 안 함</label>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- 생년월일 -->
-          <div class="field">
-            <label class="lbl" for="ap-birth">생년월일 <span class="req">*</span></label>
+          <!-- STEP 4 · 생년월일 -->
+          <div class="step-panel" data-step="4" hidden>
+            <div class="step-q">생년월일을 입력해주세요.</div>
             <input type="date" id="ap-birth" name="birth" min="1920-01-01" max="2026-12-31" />
             <p class="field-hint">예) 1978-05-21</p>
           </div>
 
-          <!-- 양력/음력 -->
-          <fieldset class="field" style="border:0;padding:0;margin:0 0 22px;">
-            <legend class="lbl" style="padding:0;">양력 / 음력 <span class="req">*</span></legend>
+          <!-- STEP 5 · 양력/음력 -->
+          <div class="step-panel" data-step="5" hidden>
+            <div class="step-q">양력인가요, 음력인가요?</div>
             <div class="opt-row">
               <label><input type="radio" name="cal" value="양력" />양력</label>
               <label><input type="radio" name="cal" value="음력" />음력</label>
               <label><input type="radio" name="cal" value="잘 모르겠어요" />잘 모르겠어요</label>
             </div>
-          </fieldset>
+          </div>
 
-          <!-- 태어난 시간 -->
-          <div class="field">
-            <label class="lbl" for="ap-time-know">태어난 시간</label>
+          <!-- STEP 6 · 태어난 시간 -->
+          <div class="step-panel" data-step="6" hidden>
+            <div class="step-q">태어난 시간을 알고 계신가요?</div>
             <select id="ap-time-know" name="timeKnow">
               <option value="시간을 알고 있어요">시간을 알고 있어요</option>
               <option value="대략 알고 있어요">대략 알고 있어요</option>
               <option value="잘 모르겠어요">잘 모르겠어요</option>
             </select>
             <input type="text" id="ap-time" name="time" placeholder="예) 오전 7시 30분, 새벽 3시쯤" style="margin-top:10px;" />
+            <p class="field-hint">시간을 알면 더 세밀한 기록이 가능합니다. (선택)</p>
           </div>
 
-          <!-- 궁금한 주제 -->
-          <fieldset class="field" style="border:0;padding:0;margin:0 0 22px;">
-            <legend class="lbl" style="padding:0;">가장 궁금한 주제 <span style="font-weight:400;color:var(--ink-soft);font-size:.85rem;">(복수 선택)</span></legend>
-            <p class="field-hint" style="margin:0 0 10px;">선택한 주제는 원국 기록의 방향을 정리할 때 참고됩니다.</p>
+          <!-- STEP 7 · 궁금한 주제 -->
+          <div class="step-panel" data-step="7" hidden>
+            <div class="step-q">가장 궁금한 주제는 무엇인가요?</div>
+            <p class="field-hint" style="margin:0 0 12px;">복수 선택 가능 · 원국 기록의 방향을 정할 때 참고됩니다.</p>
             <div class="chips">
               <label><input type="checkbox" name="topics" value="재물" />재물</label>
               <label><input type="checkbox" name="topics" value="애정" />애정</label>
@@ -124,24 +125,24 @@
               <label><input type="checkbox" name="topics" value="인생 흐름" />인생 흐름</label>
               <label><input type="checkbox" name="topics" value="전체적으로 보고 싶어요" />전체적으로 보고 싶어요</label>
             </div>
-          </fieldset>
-
-          <!-- 고민 -->
-          <div class="field">
-            <label class="lbl" for="ap-worry">남기고 싶은 고민 <span style="font-weight:400;color:var(--ink-soft);font-size:.85rem;">(선택)</span></label>
-            <textarea id="ap-worry" name="worry" placeholder="현재 가장 궁금한 점을 편하게 남겨주세요."></textarea>
           </div>
 
-          <!-- 카톡 닉네임 -->
-          <div class="field">
-            <label class="lbl" for="ap-contact">카카오톡 닉네임 또는 연락처 <span style="font-weight:400;color:var(--ink-soft);font-size:.85rem;">(선택)</span></label>
-            <input type="text" id="ap-contact" name="contact" placeholder="카톡에서 확인 가능한 이름을 적어주세요." />
+          <!-- STEP 8 · 고민 + 연락처 -->
+          <div class="step-panel" data-step="8" hidden>
+            <div class="step-q">마지막으로, 더 남기실 내용이 있나요? <span style="font-weight:400;color:var(--ink-soft);font-size:.85rem;">(선택)</span></div>
+            <textarea id="ap-worry" name="worry" placeholder="현재 가장 궁금한 점을 편하게 남겨주세요."></textarea>
+            <input type="text" id="ap-contact" name="contact" placeholder="카톡 닉네임 또는 연락처 (선택)" style="margin-top:12px;" />
           </div>
 
           <div class="form-error" id="applyError" role="alert"></div>
 
-          <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:8px;">신청 정보 확인하고 카톡으로 이동하기</button>
-          <p class="field-hint center" style="margin-top:14px;">입력하신 정보는 리포트 작성과 상담 안내에만 사용됩니다.</p>
+          <!-- 네비게이션 -->
+          <div class="step-nav">
+            <button type="button" class="btn btn-ghost" id="stepPrev" hidden>이전</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="stepNext">다음</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="stepSubmit" hidden>신청하고 카톡으로 이동하기</button>
+          </div>
+          <p class="field-hint center" style="margin-top:14px;">입력하신 정보는 기록 작성과 상담 안내에만 사용됩니다.</p>
         </form>
       </div>
     </div>
