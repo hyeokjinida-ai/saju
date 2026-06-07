@@ -221,13 +221,13 @@ function initApplyForm() {
   // 각 단계 필수값 검증 (해당 단계에서 "다음" 누를 때)
   function validateStep(i) {
     const step = i + 1;
-    if (step === 2 && !form.querySelector("#ap-name").value.trim())
+    if (step === 1 && !form.querySelector("#ap-name").value.trim())
       return "이름을 입력해 주세요.";
-    if (step === 3 && !(form.querySelector('input[name="gender"]:checked')))
+    if (step === 2 && !(form.querySelector('input[name="gender"]:checked')))
       return "성별을 선택해 주세요.";
-    if (step === 4 && !form.querySelector("#ap-birth").value)
+    if (step === 3 && !form.querySelector("#ap-birth").value)
       return "생년월일을 입력해 주세요.";
-    if (step === 5 && !(form.querySelector('input[name="cal"]:checked')))
+    if (step === 4 && !(form.querySelector('input[name="cal"]:checked')))
       return "양력 / 음력을 선택해 주세요.";
     return null;
   }
@@ -288,7 +288,7 @@ function initApplyForm() {
     }
 
     const data = {
-      product: (form.querySelector('input[name="product"]:checked') || {}).value || CONFIG.products.basic.name,
+      product: (form.querySelector('input[name="product"]:checked') || form.querySelector('input[name="product"]') || {}).value || "카톡에서 상담 예정",
       name: form.querySelector("#ap-name").value.trim(),
       gender: (form.querySelector('input[name="gender"]:checked') || {}).value || "",
       birth: form.querySelector("#ap-birth").value,

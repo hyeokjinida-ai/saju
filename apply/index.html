@@ -48,33 +48,17 @@
         </div>
 
         <form id="applyForm" novalidate>
-          <!-- STEP 1 · 상품 -->
-          <div class="step-panel" data-step="1">
-            <div class="step-q">어떤 기록을 받아보시겠어요?</div>
-            <div class="plan-select" style="grid-template-columns:1fr;gap:12px;">
-              <label class="plan-opt">
-                <input type="radio" name="product" value="명운록 簡命 (간명)" checked />
-                <span class="po-name">簡命 · 간명</span>
-                <span class="po-price" style="font-size:1rem;">핵심 요약 기록</span>
-                <span class="po-tag">첫 상담 혜택</span>
-              </label>
-              <label class="plan-opt">
-                <input type="radio" name="product" value="명운록 深命 (심명)" />
-                <span class="po-name">深命 · 심명</span>
-                <span class="po-price" style="font-size:1rem;">전체 상세 기록</span>
-                <span class="po-tag">대운 60년 포함</span>
-              </label>
-            </div>
-          </div>
+          <!-- 상품은 카톡에서 상담 (히든 기본값) -->
+          <input type="hidden" name="product" value="카톡에서 상담 예정" />
 
-          <!-- STEP 2 · 이름 -->
-          <div class="step-panel" data-step="2" hidden>
+          <!-- STEP 1 · 이름 -->
+          <div class="step-panel" data-step="1">
             <div class="step-q">이름을 알려주세요.</div>
             <input type="text" id="ap-name" name="name" autocomplete="name" placeholder="예) 홍길동" />
           </div>
 
-          <!-- STEP 3 · 성별 -->
-          <div class="step-panel" data-step="3" hidden>
+          <!-- STEP 2 · 성별 -->
+          <div class="step-panel" data-step="2" hidden>
             <div class="step-q">성별을 선택해주세요.</div>
             <div class="opt-row">
               <label><input type="radio" name="gender" value="여성" />여성</label>
@@ -83,15 +67,15 @@
             </div>
           </div>
 
-          <!-- STEP 4 · 생년월일 -->
-          <div class="step-panel" data-step="4" hidden>
+          <!-- STEP 3 · 생년월일 -->
+          <div class="step-panel" data-step="3" hidden>
             <div class="step-q">생년월일을 입력해주세요.</div>
             <input type="date" id="ap-birth" name="birth" min="1920-01-01" max="2026-12-31" />
             <p class="field-hint">예) 1978-05-21</p>
           </div>
 
-          <!-- STEP 5 · 양력/음력 -->
-          <div class="step-panel" data-step="5" hidden>
+          <!-- STEP 4 · 양력/음력 -->
+          <div class="step-panel" data-step="4" hidden>
             <div class="step-q">양력인가요, 음력인가요?</div>
             <div class="opt-row">
               <label><input type="radio" name="cal" value="양력" />양력</label>
@@ -100,8 +84,8 @@
             </div>
           </div>
 
-          <!-- STEP 6 · 태어난 시간 -->
-          <div class="step-panel" data-step="6" hidden>
+          <!-- STEP 5 · 태어난 시간 -->
+          <div class="step-panel" data-step="5" hidden>
             <div class="step-q">태어난 시간을 알고 계신가요?</div>
             <select id="ap-time-know" name="timeKnow">
               <option value="시간을 알고 있어요">시간을 알고 있어요</option>
@@ -112,8 +96,8 @@
             <p class="field-hint">시간을 알면 더 세밀한 기록이 가능합니다. (선택)</p>
           </div>
 
-          <!-- STEP 7 · 궁금한 주제 -->
-          <div class="step-panel" data-step="7" hidden>
+          <!-- STEP 6 · 궁금한 주제 -->
+          <div class="step-panel" data-step="6" hidden>
             <div class="step-q">가장 궁금한 주제는 무엇인가요?</div>
             <p class="field-hint" style="margin:0 0 12px;">복수 선택 가능 · 원국 기록의 방향을 정할 때 참고됩니다.</p>
             <div class="chips">
@@ -127,8 +111,8 @@
             </div>
           </div>
 
-          <!-- STEP 8 · 고민 + 연락처 -->
-          <div class="step-panel" data-step="8" hidden>
+          <!-- STEP 7 · 고민 + 연락처 -->
+          <div class="step-panel" data-step="7" hidden>
             <div class="step-q">마지막으로, 더 남기실 내용이 있나요? <span style="font-weight:400;color:var(--ink-soft);font-size:.85rem;">(선택)</span></div>
             <textarea id="ap-worry" name="worry" placeholder="현재 가장 궁금한 점을 편하게 남겨주세요."></textarea>
             <input type="text" id="ap-contact" name="contact" placeholder="카톡 닉네임 또는 연락처 (선택)" style="margin-top:12px;" />
