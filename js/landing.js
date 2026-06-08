@@ -209,6 +209,36 @@ function initApplyForm() {
   }
   function clearError() { err.classList.remove("show"); err.textContent = ""; }
 
+  // ---- 생년월일 연/월/일 드롭다운 채우기 ----
+  (function buildBirthSelects() {
+    const ySel = document.getElementById("ap-birth-y");
+    const mSel = document.getElementById("ap-birth-m");
+    const dSel = document.getElementById("ap-birth-d");
+    const birthHidden = document.getElementById("ap-birth");
+    if (!ySel || !mSel || !dSel || !birthHidden) return;
+
+    // 연도: 2010 → 1930 (최근이 위)
+    for (var y = 2010; y >= 1930; y--) {
+      var o = document.createElement("option"); o.value = y; o.textContent = y + "년"; ySel.appendChild(o);
+    }
+    for (var m = 1; m <= 12; m++) {
+      var om = document.createElement("option"); om.value = m; om.textContent = m + "월"; mSel.appendChild(om);
+    }
+    for (var d = 1; d <= 31; d++) {
+      var od = document.createElement("option"); od.value = d; od.textContent = d + "일"; dSel.appendChild(od);
+    }
+    function syncBirth() {
+      if (ySel.value && mSel.value && dSel.value) {
+        var mm = ("0" + mSel.value).slice(-2);
+        var dd = ("0" + dSel.value).slice(-2);
+        birthHidden.value = ySel.value + "-" + mm + "-" + dd;
+      } else {
+        birthHidden.value = "";
+      }
+    }
+    [ySel, mSel, dSel].forEach(function (s) { s.addEventListener("change", syncBirth); });
+  })();
+
   // ---- 단계형 위저드 ----
   const panels = Array.from(form.querySelectorAll(".step-panel"));
   const total = panels.length;

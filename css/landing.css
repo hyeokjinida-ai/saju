@@ -915,12 +915,22 @@ body { background: var(--cream-lt); color: var(--ink); }
 .step-panel[hidden] { display: none; }
 @keyframes stepIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
 .step-q { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 1.25rem; color: var(--ink); margin-bottom: 20px; line-height: 1.5; word-break: keep-all; }
-/* 단계 패널 내부 입력 요소는 항상 전체 너비·세로 배치 */
+/* 단계 패널 내부 입력 요소는 항상 전체 너비·세로 배치 + 크게 */
 .step-panel input[type="text"],
 .step-panel input[type="date"],
 .step-panel select,
-.step-panel textarea { display: block; width: 100%; box-sizing: border-box; }
-.step-panel textarea { min-height: 100px; resize: vertical; }
+.step-panel textarea {
+  display: block; width: 100%; box-sizing: border-box;
+  font-size: 1.15rem; padding: 16px 16px; border-radius: 12px;
+}
+.step-panel textarea { min-height: 110px; resize: vertical; }
+/* 선택형(성별·양음력) 버튼도 크게 */
+.step-panel .opt-row label { padding: 16px 12px; font-size: 1.05rem; }
+.step-panel .chips label { padding: 13px 20px; font-size: 1.02rem; }
+
+/* 생년월일 연/월/일 드롭다운 */
+.birth-selects { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 10px; }
+.birth-selects select { font-size: 1.15rem; padding: 16px 12px; }
 .step-nav { display: flex; gap: 10px; align-items: center; margin-top: 24px; }
 .step-nav .btn-ghost { flex: 0 0 auto; color: var(--ink-soft); border-color: var(--line); }
 /* hidden 속성이 .btn-block 등의 display 규칙에 덮이지 않도록 */

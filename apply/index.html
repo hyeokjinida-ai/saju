@@ -72,11 +72,15 @@
             </div>
           </div>
 
-          <!-- STEP 3 · 생년월일 -->
+          <!-- STEP 3 · 생년월일 (연/월/일 드롭다운) -->
           <div class="step-panel" data-step="3" hidden>
-            <div class="step-q">생년월일을 입력해주세요.</div>
-            <input type="date" id="ap-birth" name="birth" min="1920-01-01" max="2026-12-31" />
-            <p class="field-hint">예) 1978-05-21</p>
+            <div class="step-q">생년월일을 선택해주세요.</div>
+            <div class="birth-selects">
+              <select id="ap-birth-y" aria-label="태어난 연도"><option value="">연도</option></select>
+              <select id="ap-birth-m" aria-label="태어난 월"><option value="">월</option></select>
+              <select id="ap-birth-d" aria-label="태어난 일"><option value="">일</option></select>
+            </div>
+            <input type="hidden" id="ap-birth" name="birth" />
           </div>
 
           <!-- STEP 4 · 양력/음력 -->
