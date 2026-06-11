@@ -262,6 +262,20 @@ function initApplyForm() {
     return null;
   }
 
+  // 단계 이름 (추적 라벨용) — 어느 질문에서 이탈하는지 보기 위함
+  const STEP_NAMES = ["이름", "성별", "생년월일", "양음력", "태어난시간", "궁금한주제", "고민연락처"];
+  const reachedSteps = {};
+  function trackStep(i) {
+    const label = STEP_NAMES[i] || ("step" + (i + 1));
+    const stepNo = i + 1;
+    if (reachedSteps[i]) return;   // 같은 단계 중복 집계 방지
+    reachedSteps[i] = true;
+    // 메타 픽셀: 커스텀 이벤트 (Step1_이름 ... Step7_고민연락처)
+    try { if (window.fbq) fbq("trackCustom", "FormStep", { step: stepNo, name: label }); } catch (e) {}
+    // Vercel Analytics: 커스텀 이벤트
+    try { if (window.va) window.va("event", { name: "form_step", data: { step: stepNo, label: label } }); } catch (e) {}
+  }
+
   function render() {
     panels.forEach(function (p, i) { p.hidden = (i !== cur); });
     if (countEl) countEl.textContent = (cur + 1) + " / " + total;
@@ -269,6 +283,7 @@ function initApplyForm() {
     const last = (cur === total - 1);
     nextBtn.hidden = last;
     submitBtn.hidden = !last;
+    trackStep(cur);   // 현재 단계 도달 추적
     // 현재 패널 첫 입력에 포커스
     const firstInput = panels[cur].querySelector("input[type=text], input[type=date], select, textarea");
     if (firstInput) { try { firstInput.focus({ preventScroll: true }); } catch (e) {} }
