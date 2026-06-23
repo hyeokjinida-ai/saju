@@ -38,12 +38,31 @@ function won(n) { return Number(n).toLocaleString("ko-KR") + "원"; }
    페이지 공통 초기화
    ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
+  initKakaoLinks();  // [data-kakao] 카톡 링크 주입 + 전환 추적
   initImages();
   initReveal();
-  initApplyForm();   // /apply 에서만 동작
-  initThanks();      // /thanks 에서만 동작
+  initApplyForm();   // /apply 에서만 동작 (현재 미사용)
+  initThanks();      // /thanks 에서만 동작 (현재 미사용)
   initSceneryFromHandoff();
 });
+
+/* ============================================================
+   카톡 직행 링크 주입 — [data-kakao] 요소 전부에 CONFIG.KAKAO_CHAT_URL 적용
+   (링크 변경은 CONFIG 한 줄만 고치면 전 페이지 반영)
+   클릭 시 메타 Contact 전환 이벤트 전송
+   ============================================================ */
+function initKakaoLinks() {
+  var url = (CONFIG && CONFIG.KAKAO_CHAT_URL) ? CONFIG.KAKAO_CHAT_URL : "#";
+  document.querySelectorAll("[data-kakao]").forEach(function (el) {
+    el.setAttribute("href", url);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+    el.addEventListener("click", function () {
+      try { if (window.fbq) fbq("track", "Contact"); } catch (e) {}
+      try { if (window.va) window.va("event", { name: "kakao_click" }); } catch (e) {}
+    });
+  });
+}
 
 /* ============================================================
    Claude Design 핸드오프 SVG (LunarMansionChart, Galaxy, Mountain, Sun Radiant)
